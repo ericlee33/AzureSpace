@@ -1,29 +1,16 @@
-# azure-prj
+# AzureSpace
 
-## Project setup
+## 本项目基于vue vue-cli3 vuex vue-router less element-ui实现
+
+## 运行前安装依赖
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 启动方式
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 后端接口: 腾讯新闻

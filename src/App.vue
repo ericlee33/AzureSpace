@@ -1,29 +1,60 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <!-- 引入头部组件 -->
+    <Header></Header>
+
+    <div class="w content">
+
+      <div class="container">
+        <router-view/>
+      </div>
+
+      <!-- 引入右侧边栏组件 -->
+      <Aside id="aside"></Aside>
     </div>
-    <router-view/>
+    <!-- 引入底部组件 -->
+    <Footer></Footer>
   </div>
 </template>
+<script>
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+import Aside from './components/Aside.vue'
 
-<style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  data(){
+    return {
+
     }
+  },
+  components: {
+    Header,
+    Footer,
+    Aside
   }
 }
+</script>
+<style lang="less">
+html {
+  height: 100%;
+  width: 100%;
+  background: url('./assets/images/bg-cover.png');
+}
+.content {
+  padding: 40px 0;
+  overflow: hidden;
+
+  .container {
+    width: 60%;
+    float: left;
+    margin-right: 5%;
+    background: url('./assets/images/bg-cover.png');
+  }
+  #aside {
+    float: left;
+    width: 35%;
+    padding: 30px;
+  }
+}
+
 </style>
