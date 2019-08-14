@@ -7,20 +7,42 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/bloglist'
     },
     {
-      path: '/home',
-      name: 'home',
-      component: () => import('./views/Home.vue')
+      path: '/bloglist',
+      name: 'bloglist',
+      component: () => import('./views/BlogList.vue')
     },
     {
-      path: '/newsList',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      path: '/newslist',
+      name: 'newslist',
       component: () => import('./views/NewsList.vue'),
+    },
+    {
+      path: '/messageboard',
+      name: 'messageboard',
+      component: () => import('./views/MessageBoard.vue')
+    },
+    {
+      path: '/register',
+      name:'reg',
+      component: () => import('./components/register.vue')
+    },
+    {
+      path: '/aboutme',
+      name:'aboutme',
+      component: () => import('./views/AboutMe.vue')
+    },
+    {
+      path: '/bloglist/bloginfo/:id',
+      name:'bloginfo',
+      component: () => import('./views/BlogInfo.vue')
     }
   ],
-  linkActiveClass: 'nav-active'
+  linkActiveClass: 'nav-active',
+  // 每次切换路由页面位置
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 400 }
+}
 })

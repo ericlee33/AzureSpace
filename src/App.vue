@@ -3,7 +3,7 @@
     <!-- 引入头部组件 -->
     <Header></Header>
 
-    <div class="w content">
+    <div class="w app-content">
 
       <div class="container">
         <router-view/>
@@ -40,20 +40,20 @@ html {
   width: 100%;
   background: url('./assets/images/bg-cover.png');
 }
-.content {
+.app-content {
   padding: 40px 0;
   overflow: hidden;
+  min-height:1000px;
 
   .container {
     width: 60%;
     float: left;
     margin-right: 5%;
-    background: url('./assets/images/bg-cover.png');
   }
   #aside {
     float: left;
     width: 35%;
-    padding: 30px;
+    padding: 10px;
   }
 }
 

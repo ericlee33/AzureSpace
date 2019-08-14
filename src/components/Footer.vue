@@ -1,7 +1,8 @@
 <template>
-  <div class="footer">
-    <div class="w">
-      <div class="copyright">Copyright © 2019, azure All Rights Reserved</div>
+  <div class="footer-container">
+    <div class="w footer">
+      <p>Azure的个人空间</p>
+      <p class="copyright">Copyright © 2019, azure All Rights Reserved</p>
     </div>
   </div>
 </template>
@@ -15,8 +16,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.footer {
-  height: 150px;
+.footer-container {
+  min-height: 125px;
   background: url('../assets/images/footer/footer-image.png') no-repeat center center;
   position: relative;
   &::before {
@@ -27,14 +28,16 @@ export default {
     height: 100%;
     background-color: rgba(0,0,0,0.2);
   }
-  .w {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .copyright {
-      color: coral;
+  .footer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    p {
+      margin-top: 10px;
+      color: #333;
+      font-weight: 700;
       font-size: 20px;
     }
   }
