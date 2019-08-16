@@ -13,6 +13,7 @@
             <router-link to="/messageboard">留言板</router-link>
             <router-link to="/register">登录</router-link>
             <router-link to="/aboutme">关于我</router-link>
+            <a href="/admin.html">点</a>
           </ul>
         </div>
 

@@ -17,9 +17,9 @@
   </div>
 </template>
 <script>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
-import Aside from './components/Aside.vue'
+import Header from '../../components/Header.vue'
+import Footer from '../../components/Footer.vue'
+import Aside from '../../components/Aside.vue'
 
 export default {
   data(){
@@ -38,7 +38,7 @@ export default {
 html {
   height: 100%;
   width: 100%;
-  background: url('./assets/images/bg-cover.png');
+  background: url('../../assets/images/bg-cover.png');
 }
 .app-content {
   padding: 40px 0;

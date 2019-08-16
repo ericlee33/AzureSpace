@@ -1,14 +1,5 @@
 <template>
   <div class="news-container">
-    <!-- <div class="news-container banner">
-      <ul>
-        <li v-for="item in newsinfo" :key="item.app_id">
-          <img :src="item.bimg" alt="">
-          <span class="title">{{item.title}}</span>
-          <span class="info">{{item.intro}}</span>
-        </li>
-      </ul>
-    </div> -->
     <!-- 使用懒加载新闻图片 -->
     <h2>下面是新闻快播~</h2>
     <el-divider></el-divider>

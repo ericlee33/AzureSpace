@@ -12,32 +12,32 @@ export default new Router({
     {
       path: '/bloglist',
       name: 'bloglist',
-      component: () => import('./views/BlogList.vue')
+      component: () => import('./BlogList.vue')
     },
     {
       path: '/newslist',
       name: 'newslist',
-      component: () => import('./views/NewsList.vue'),
+      component: () => import('./NewsList.vue'),
     },
     {
       path: '/messageboard',
       name: 'messageboard',
-      component: () => import('./views/MessageBoard.vue')
+      component: () => import('./MessageBoard.vue')
     },
     {
       path: '/register',
       name:'reg',
-      component: () => import('./components/register.vue')
+      component: () => import('../../components/register.vue')
     },
     {
       path: '/aboutme',
       name:'aboutme',
-      component: () => import('./views/AboutMe.vue')
+      component: () => import('./AboutMe.vue')
     },
     {
       path: '/bloglist/bloginfo/:id',
       name:'bloginfo',
-      component: () => import('./views/BlogInfo.vue')
+      component: () => import('./BlogInfo.vue')
     }
   ],
   linkActiveClass: 'nav-active',

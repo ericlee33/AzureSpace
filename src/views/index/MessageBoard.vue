@@ -33,7 +33,10 @@
           <span class="nickname">{{ item.nickname }}</span>
           <span class="time">{{ item.created_time | dateFormat }}</span>
         </div>
-        <p class="content">{{ item.content }}</p>
+        <p class="content">
+          {{ item.content }}
+          <span class="delete" @click="deleteMessage(item._id)">删除</span>
+        </p>
       </div>
     </div>
 
@@ -42,25 +45,21 @@
 
 <script>
 export default {
-  // 向父元素请求id
-  props:["id"],
   data(){
     return{
       comments: [],
       formLabelAlign: {
-        id: this.id,
-        name: '',
+        nickname: '',
         content: ''
       }
     }
   },
   methods: {
-    // 向后台评论接口发送评论数据
+    // 发送柳岩数据
     sendMessageBoard(){
       // console.log(this.formLabelAlign)
       // console.log(this.id)
-      this.$axios.post('/api/comment/' + this.id,{
-          id: this.formLabelAlign.id,
+      this.$axios.post('/api/addmessageboard',{
           nickname: this.formLabelAlign.name,
           content: this.formLabelAlign.content
         })
@@ -68,9 +67,9 @@ export default {
           if(res.data.err_code === 0){
             this.formLabelAlign.name = ''
             this.formLabelAlign.content = ''
-            this.$message('评论成功!')
-            // 评论成功后,刷新评论区内容
-            this.getComment()
+            this.$message('留言成功!')
+            // 发送成功后,刷新评论区内容
+            this.getMessageBoard()
           }
         })
         .catch(err => {
@@ -78,19 +77,32 @@ export default {
         })
     },
     // 请求评论区数据
-    getComment(){
-      this.$axios.get('/api/comment/' + this.id)
+    getMessageBoard(){
+      this.$axios.get('/api/getmessageboard')
         .then(res => {
-          this.comments = res.data.comment
+          this.comments = res.data.data
         })
         .catch(err => {
           console.log(err)
         })
-      }
     },
-    created() {
-      this.getComment()
+    // 删除消息
+    deleteMessage(id) {
+      this.$axios.post('/api/deletemessageboard/' + id)
+        .then(res => {
+          if(res.data.err_code === 0) {
+            this.$message('删除成功')
+            this.getMessageBoard()
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
+  },
+  created() {
+    this.getMessageBoard()
+  }
 }
 </script>
 
@@ -141,6 +153,11 @@ export default {
         font-weight: bold;
         font-size: 20px;
         color: #777;
+
+        .delete {
+          float: right;
+          cursor: pointer;
+        }
       }
     }
   }

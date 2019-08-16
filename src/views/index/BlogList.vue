@@ -10,7 +10,7 @@
           <h3 class="title">{{ item.title }}</h3>
           <p class="readinfo"> > 点击阅读全文 </p>
         </div>
-        <p class="content">{{ item.content | ellipsis }}</p>
+        <p class="content" v-html="$options.filters.ellipsis(item.content)"></p>
         <p class="time"><i class="el-icon-time"></i> {{ item.created_time | dateFormat }}</p>
       </div>
     </div>
@@ -28,7 +28,7 @@ export default {
     }
   },
   methods: {
-    addArticle() {
+    getArticle() {
       this.$axios.get('/api/getblog')
         .then(res => {
           // console.log(res)
@@ -42,7 +42,7 @@ export default {
     }
   },
   created(){
-    this.addArticle()
+    this.getArticle()
   }
 }
 </script>

@@ -10,7 +10,7 @@
         <h3 class="title">{{ item.title }}</h3>
         <p class="time">发表时间:{{ item.created_time | dateFormat }}</p>
       </div>
-      <p class="content">{{ item.content }}</p>
+      <p class="content" v-html="item.content"></p>
     </div>
 
     <blog-info-ct :id="this.id"></blog-info-ct>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import comment from '../components/subcomponents/comment.vue'
+import comment from '../../components/subcomponents/comment.vue'
 
 export default {
   data(){
