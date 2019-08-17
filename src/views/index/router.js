@@ -27,7 +27,7 @@ export default new Router({
     {
       path: '/register',
       name:'reg',
-      component: () => import('../../components/register.vue')
+      component: () => import('../../components/subcomponents/register.vue')
     },
     {
       path: '/aboutme',
@@ -38,6 +38,16 @@ export default new Router({
       path: '/bloglist/bloginfo/:id',
       name:'bloginfo',
       component: () => import('./BlogInfo.vue')
+    },
+    {
+      path: '/essaylist',
+      name:'essaylist',
+      component: () => import('./EssayList.vue')
+    },
+    {
+      path: '/essalist/essayinfo/:id',
+      name:'essayinfo',
+      component: () => import('./EssayInfo.vue')
     }
   ],
   linkActiveClass: 'nav-active',

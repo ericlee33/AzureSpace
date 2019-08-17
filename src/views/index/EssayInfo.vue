@@ -9,6 +9,7 @@
       <div class="header">
         <h3 class="title">{{ item.title }}</h3>
         <p class="time">发表时间:{{ item.created_time | dateFormat }}</p>
+        <p class="catagory">文章类型: {{ item.catagory }}</p>
       </div>
       <p class="content" v-html="item.content"></p>
     </div>

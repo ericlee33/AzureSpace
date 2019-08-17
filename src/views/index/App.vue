@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- 引入头部组件 -->
+    <!-- 引入头部组件 --> 
     <Header></Header>
 
     <div class="w app-content">
@@ -11,6 +11,8 @@
 
       <!-- 引入右侧边栏组件 -->
       <Aside id="aside"></Aside>
+      <!-- 清除浮动影响,为了让container左右阴影不被overflow:hidden替代,使用clear:both -->
+      <div class="clear"></div>
     </div>
     <!-- 引入底部组件 -->
     <Footer></Footer>
@@ -24,8 +26,20 @@ import Aside from '../../components/Aside.vue'
 export default {
   data(){
     return {
-
+      
     }
+  },
+  methods: {
+    open() {
+      this.$notify({
+        message: '欢迎来到我的空间,在这里可以畅所欲言哦!',
+        duration: 3500,
+        offset: 200
+      })
+    }
+  },
+  mounted() {
+    this.open()
   },
   components: {
     Header,
@@ -42,7 +56,6 @@ html {
 }
 .app-content {
   padding: 40px 0;
-  overflow: hidden;
   min-height:1000px;
 
   .container {
@@ -54,6 +67,9 @@ html {
     float: left;
     width: 35%;
     padding: 10px;
+  }
+  .clear {
+    clear: both;
   }
 }
 

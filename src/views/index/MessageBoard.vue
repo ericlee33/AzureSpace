@@ -127,9 +127,9 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      background-color: rgba(0,0,0,.0.7);
-      border: 1px solid #333;
-      box-shadow: 0 0 5px #333;
+      background-color: rgba(255,255,255,.6);
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,.3);
       padding: 1%;
 
       .header {
@@ -151,7 +151,7 @@ export default {
       }
       .content{
         font-weight: bold;
-        font-size: 20px;
+        font-size: 16px;
         color: #777;
 
         .delete {

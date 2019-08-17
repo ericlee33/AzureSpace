@@ -4,6 +4,7 @@
       <!-- 添加按钮 -->
       <el-button type="primary" @click="goAddArticle">添加心得</el-button>
       <!-- 搜索栏 -->
+      <!-- element中的过滤方法 -->
        <el-table :data="tableData.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
         <el-table-column
           label="文章标题"
@@ -12,6 +13,10 @@
         <el-table-column
           label="创建时间"
           prop="created_time">
+        </el-table-column>
+        <el-table-column
+          label="文章类别"
+          prop="category">
         </el-table-column>
         <el-table-column
           align="right">
@@ -66,7 +71,7 @@ export default {
         })
     },
     getArticle() {
-      this.$axios.get('/api/getblog')
+      this.$axios.post('/api/getblog')
         .then(res => {
           // console.log(res)
           // console.log(res.data.blogs)

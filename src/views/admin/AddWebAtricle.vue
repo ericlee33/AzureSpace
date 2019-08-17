@@ -1,12 +1,25 @@
 <template>
   <div class="add-web-article-container">
+
     <div class="form-container">
+
+      <div class="header">
+        <p>请选择要添加的的文章类型:</p>
+        <el-radio-group v-model="radio">
+          <el-radio-button label="前端技术"></el-radio-button>
+          <el-radio-button label="个人随笔"></el-radio-button>
+        </el-radio-group>
+      </div>
+
       <el-form label-width="120px" :model="formLabelAlign">
+        <el-form-item label="文章类型" required >
+          <el-input v-model="formLabelAlign.category" disabled></el-input>
+        </el-form-item>
         <el-form-item label="文章标题" required>
           <el-input v-model="formLabelAlign.title"></el-input>
         </el-form-item>
         <el-form-item label="文章内容" required>
-          <el-input type="textarea" v-model="formLabelAlign.content" placeholder="来都来了,何不留个足迹呢~" :rows="24"></el-input>
+          <el-input type="textarea" v-model="formLabelAlign.content" placeholder="来都来了,何不留个足迹呢~" :rows="18"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="sendWebArticle">发表</el-button>
@@ -21,7 +34,9 @@
 export default {
   data(){
     return{
+      radio: '',
       formLabelAlign: {
+        category: '',
         title: '',
         content: ''
       }
@@ -33,7 +48,8 @@ export default {
       // console.log(this.formLabelAlign)
       this.$axios.post('/api/addblog',{
           title: this.formLabelAlign.title,
-          content: this.formLabelAlign.content
+          content: this.formLabelAlign.content,
+          category: this.formLabelAlign.category
         })
         .then(res => {
           if(res.data.err_code === 0){
@@ -49,6 +65,14 @@ export default {
     },
     backToWebAdmin() {
       this.$router.go(-1)
+    },
+    // web(e) {
+    //  this.formLabelAlign.category = e.srcElement.innerHTML
+    // }
+  },
+  watch: {
+    radio: function(newval){
+      this.formLabelAlign.category = newval
     }
   }
 }
@@ -58,11 +82,22 @@ export default {
 .add-web-article-container {
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  padding: 2%;
 
   .form-container {
     width: 90%;
+
+    .header {
+      margin-left: 10%;
+      margin-bottom: 2%;
+
+      p {
+        height: 25px;
+        line-height: 25px;
+      }
+    }
   }
 }
 </style>

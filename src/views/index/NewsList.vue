@@ -92,11 +92,11 @@ export default {
       text-align: left;
 
       .title {
-        font-size: 22px;
+        font-size: 20px;
       }
       .info {
         margin-top: 5%;
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   }

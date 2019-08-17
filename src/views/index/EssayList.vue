@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     getArticle() {
-      this.$axios.post('/api/getblog',{category: '前端技术'})
+      this.$axios.post('/api/getblog',{category: '个人随笔'})
         .then(res => {
           // console.log(res)
           // console.log(res.data.blogs)
@@ -81,8 +81,13 @@ export default {
           font-size: 20px;
           color: @titlecolor;
           text-shadow: 2px 2px 15px white;
+          // transform: rotateX(360deg);
+          // transition: all 1s ease 1s;
+          // &:hover {
+          //   transform: rotateX(360deg);
+          //   transition: all 1s linear;
+          // }
         }
-        
         .readinfo {
           font-size: 14px;
           margin-top: 10px;

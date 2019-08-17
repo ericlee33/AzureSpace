@@ -33,6 +33,7 @@ Vue.prototype.$axios = axios
 // 引入normalize.css
 import '../../assets/css/normalize.css'
 import '../../assets/css/mySettting.css'
+import '../../assets/css/animate.css'
 
 // 引入app,router,store
 import Admin from './App.vue'

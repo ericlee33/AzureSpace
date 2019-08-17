@@ -1,6 +1,6 @@
 <template>
   <div class="aside-container">
-  
+    
     <aside-carousel />
     <aside-contact />
 
@@ -25,7 +25,6 @@ export default {
 
 <style lang="less" scoped>
 .aside-container {
-  background-color: rgba(0,0,0,0.05);
   box-shadow: 0 0 10px azure;
 }
 </style>

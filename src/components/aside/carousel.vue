@@ -53,9 +53,13 @@ export default {
 
 <style lang="less" scoped>
 .wrapper {
+  padding: 2%;
+  background-color: rgba(255,255,255,.6);
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+
   img{
     width: 100%;
-    height: 350px;
   }
 }
 </style>

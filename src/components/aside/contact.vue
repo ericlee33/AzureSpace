@@ -65,8 +65,10 @@ export default {
   padding: 4%;
   margin-top: 10%;
   width: 100%;
-  background-color: rgba(255,255,255,.3);
-  box-shadow: 0 0 15px #777;
+  background-color: rgba(255,255,255,.6);
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+
   // 名片头部
   .header {
     border-bottom: 1px solid azure;
@@ -77,6 +79,7 @@ export default {
   .text {
     margin-top: 2%;
     .imgContact {
+      padding: 0 30% 0 30%;
       display: flex;
       justify-content: space-around;
       // 微信二维码样式

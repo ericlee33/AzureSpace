@@ -9,7 +9,7 @@
 
       <el-form label-width="120px" :model="formLabelAlign">
         <el-form-item label="昵称" required>
-          <el-input v-model="formLabelAlign.name"></el-input>
+          <el-input v-model="formLabelAlign.nickname"></el-input>
         </el-form-item>
         <el-form-item label="想说些什么~" required>
           <el-input type="textarea" v-model="formLabelAlign.content" placeholder="来都来了,何不留个足迹呢~"></el-input>
@@ -49,7 +49,7 @@ export default {
       comments: [],
       formLabelAlign: {
         id: this.id,
-        name: '',
+        nickname: '',
         content: ''
       }
     }
@@ -61,7 +61,7 @@ export default {
       // console.log(this.id)
       this.$axios.post('/api/comment/' + this.id,{
           id: this.formLabelAlign.id,
-          nickname: this.formLabelAlign.name,
+          nickname: this.formLabelAlign.nickname,
           content: this.formLabelAlign.content
         })
         .then(res => {
@@ -97,6 +97,8 @@ export default {
 <style lang="less" scoped>
 
 .comment-container {
+  padding: 3%;
+
   h3 {
     height: 50px;
     line-height: 50px;
@@ -115,9 +117,9 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      background-color: rgba(0,0,0,.0.7);
-      border: 1px solid #333;
-      box-shadow: 0 0 5px #333;
+      background-color: rgba(255,255,255,.6);
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,.3);
       padding: 1%;
 
       .header {

@@ -1,12 +1,24 @@
 <template>
   <div class="edit-web-article-container">
     <div class="form-container">
+
+      <div class="header">
+        <span>请选择要添加的的文章类型: </span>
+        <el-radio-group v-model="radio">
+          <el-radio-button label="前端技术"></el-radio-button>
+          <el-radio-button label="个人随笔"></el-radio-button>
+        </el-radio-group>
+      </div>
+
       <el-form label-width="120px" :model="formLabelAlign">
+        <el-form-item label="文章类型" required >
+          <el-input v-model="formLabelAlign.category" disabled></el-input>
+        </el-form-item>
         <el-form-item label="文章标题" required>
           <el-input v-model="formLabelAlign.title"></el-input>
         </el-form-item>
         <el-form-item label="文章内容" required>
-          <el-input type="textarea" v-model="formLabelAlign.content" placeholder="来都来了,何不留个足迹呢~" :rows="24"></el-input>
+          <el-input type="textarea" v-model="formLabelAlign.content" placeholder="来都来了,何不留个足迹呢~" :rows="18"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="sendWebArticle">发表</el-button>
@@ -22,9 +34,11 @@ export default {
   // props: []
   data(){
     return{
+      radio: '',
       formLabelAlign: {
         title: '',
-        content: ''
+        content: '',
+        category: ''
       },
       id: this.$route.params.id
     }
@@ -46,7 +60,8 @@ export default {
       // console.log(this.formLabelAlign)
       this.$axios.post('/api/updateblog/' + this.id,{
           title: this.formLabelAlign.title,
-          content: this.formLabelAlign.content
+          content: this.formLabelAlign.content,
+          category: this.formLabelAlign.category
         })
         .then(res => {
           if(res.data.err_code === 0){
@@ -64,6 +79,11 @@ export default {
   },
   created() {
     this.getArticle()
+  },
+  watch: {
+    radio: function(newval){
+      this.formLabelAlign.category = newval
+    }
   }
 }
 
@@ -77,6 +97,16 @@ export default {
 
   .form-container {
     width: 90%;
+
+    .header {
+      margin-left: 5%;
+      margin-bottom: 2%;
+
+      p {
+        height: 25px;
+        line-height: 25px;
+      }
+    }
   }
 }
 </style>
