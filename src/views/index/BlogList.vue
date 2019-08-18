@@ -31,9 +31,12 @@ export default {
     getArticle() {
       this.$axios.post('/api/getblog',{category: '前端技术'})
         .then(res => {
-          // console.log(res)
-          // console.log(res.data.blogs)
-          this.article = res.data.blogs
+          if(res.data.err_code === 0){
+            this.article = res.data.blogs
+          }
+        })
+        .catch(err => {
+          console.log(err)
         })
     },
     // 点击文章查看详细内容

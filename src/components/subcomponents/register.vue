@@ -78,6 +78,12 @@ export default {
   },
   methods: {
     submitFormRegister() {
+      let user = {
+        account: this.ruleForm.account,
+        password: this.ruleForm.pass
+      }
+      user = JSON.stringify(user)
+      // 向注册接口发送请求
       this.$axios.post('/api/register',{
         account: this.ruleForm.account,
         password: this.ruleForm.pass
@@ -85,14 +91,28 @@ export default {
         .then(res => {
           if(res.data.err_code === 0) {
             this.$message('注册成功!')
-          }
+            // 清空输入的内容
+            window.localStorage.setItem('user', user)
+
+            this.ruleForm.account = ''
+            this.ruleForm.pass = ''
+            this.ruleForm.checkPass = ''
+            
+            this.$store.commit('login')
+            this.dialogFormVisible = false
+           }
+           if(res.data.err_code === 1) {
+             this.$message('帐号已存在!')
+             this.ruleForm.account = ''
+             this.ruleForm.pass = ''
+             this.ruleForm.checkPass = ''
+           }
         })
         .catch(err => {
           console.log(err)
         })
 
 
-      this.dialogFormVisible = false
     }
   }
 }

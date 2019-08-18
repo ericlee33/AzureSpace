@@ -8,22 +8,22 @@
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose">
-        <el-menu-item index="1" @click="goAdminWebArticle()">
+        <el-menu-item index="1" @click="goAdminWebArticle">
           <i class="el-icon-menu"></i>
           <span slot="title">添加前端心得</span>
         </el-menu-item>
-        <el-menu-item index="2">
+        <el-menu-item index="2" @click="goAccountPermission">
           <i class="el-icon-menu"></i>
-          <span slot="title">导航二</span>
+          <span slot="title">帐号权限</span>
         </el-menu-item>
-        <el-menu-item index="3" disabled>
+        <!-- <el-menu-item index="3">
           <i class="el-icon-document"></i>
           <span slot="title">导航三</span>
         </el-menu-item>
         <el-menu-item index="4">
           <i class="el-icon-setting"></i>
           <span slot="title">导航四</span>
-        </el-menu-item>
+        </el-menu-item> -->
       </el-menu>
     </div>
 
@@ -44,7 +44,10 @@
         console.log(key, keyPath);
       },
       goAdminWebArticle() {
-        this.$router.push({ name: "adminwebarticle", params: {} }); 
+        this.$router.push({ name: "adminwebarticle", params: {} })
+      },
+      goAccountPermission(){
+        this.$router.push({ name: 'accountpermission', params: {} })
       },
       navHeight() {
         // document.getElementById('admin-nav-container').style.height=document. +'px'

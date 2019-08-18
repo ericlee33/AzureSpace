@@ -16,15 +16,17 @@
             <router-link to="/essaylist">个人随笔</router-link>
             <router-link to="/messageboard">留言板</router-link>
             <router-link to="/newslist">新闻</router-link>
-            <router-link to="/register">登录</router-link>
             <router-link to="/aboutme">关于我</router-link>
-            <a href="/admin.html">点</a>
           </ul>
 
           <!-- 注册 -->
-          <div class="buttons">
+          <div class="buttons" v-if="!loginFlag">
             <register></register>
             <login></login>
+          </div>
+          <div v-if="loginFlag">
+            <el-button type="danger" size="mini" @click="outLogin">登出</el-button>
+            <el-button type="success" size="mini" @click="goAdmin">进入管理系统</el-button>
           </div>
         </div>
 
@@ -44,22 +46,16 @@ import login from './subcomponents/login.vue'
 export default {
   data() {
     return {
+      // nav
       navName:'',
       navBarFixed: false,
+      // 登录或者进入管理按钮是否显示
       helloFlag: false,
-
+      // 获取登录状态
+      loginFlag: this.$store.state.loginFlag,
+      // 登录或注册dialog是否显示
       dialogFormVisible: false,
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        },
-        formLabelWidth: '120px'
+      formLabelWidth: '120px'
     }
   },
   methods: {
@@ -76,28 +72,38 @@ export default {
     show() {
       this.helloFlag = !this.helloFlag
     },
-
+    goAdmin() {
+      window.location.href = '/admin.html'
+    },
+    outLogin() {
+      window.localStorage.removeItem('user')
+      this.$message("登出成功")
+      // this.judgeLogin()
+      this.$store.commit('login')
+    }
 
     // 动画生命周期钩子
-    beforeEnter: function (el) {
-      el.style.transfrom = "translate(0,-293px)"
-    },
-    // 当与 CSS 结合使用时
-    // 回调函数 done 是可选的
-    enter: function (el, done) {
-      el.offsetWidth
-      el.style.transfrom = "translate(0,300px)"
-      el.style.transition = "all 1s ease"
+    // beforeEnter: function (el) {
+    //   el.style.transfrom = "translate(0,-293px)"
+    // },
+    // // 当与 CSS 结合使用时
+    // // 回调函数 done 是可选的
+    // enter: function (el, done) {
+    //   el.offsetWidth
+    //   el.style.transfrom = "translate(0,300px)"
+    //   el.style.transition = "all 1s ease"
       
-      // ...
-      // done()
-    },
-    afterEnter: function (el) {
-      // ...
-    },
+    //   // ...
+    //   // done()
+    // },
+    // afterEnter: function (el) {
+    //   // ...
+    // },
    },
 
-
+  created() {
+    this.$store.commit('login')
+  },
   mounted () {
     // 事件监听滚动条
     window.addEventListener('scroll', this.watchScroll)
@@ -106,6 +112,12 @@ export default {
   components: {
     register,
     login
+  },
+  watch: {
+    // 监听vuex中loginflag的改变
+    '$store.state.loginFlag': function() {
+      this.loginFlag = this.$store.state.loginFlag
+    }
   }
 }
 

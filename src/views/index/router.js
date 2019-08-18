@@ -25,11 +25,6 @@ export default new Router({
       component: () => import('./MessageBoard.vue')
     },
     {
-      path: '/register',
-      name:'reg',
-      component: () => import('../../components/subcomponents/register.vue')
-    },
-    {
       path: '/aboutme',
       name:'aboutme',
       component: () => import('./AboutMe.vue')

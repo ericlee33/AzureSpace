@@ -37,7 +37,7 @@ export default {
         callback(new Error('请输入密码'));
       }
         // callback();
-      }
+    }
     return {
       // 表单
       dialogFormVisible: false,
@@ -60,10 +60,12 @@ export default {
   },
   methods: {
     submitFormLogin() {
-      const user = {
+      let user = {
         account: this.ruleForm.account,
         password: this.ruleForm.pass
       }
+      user = JSON.stringify(user)
+      // 请求登录接口
       this.$axios.post('/api/login',{
         account: this.ruleForm.account,
         password: this.ruleForm.pass
@@ -71,15 +73,22 @@ export default {
         .then(res => {
           if(res.data.err_code === 0) {
             this.$message('登录成功!')
+            // 清空输入内容
+            this.ruleForm.account = ''
+            this.ruleForm.pass = ''
+
             window.localStorage.setItem('user', user)
+            
+            this.$store.commit('login')
+            this.dialogFormVisible = false
+          }
+          else if(res.data.err_code === 1) {
+            this.$message('帐号或密码不存在')
           }
         })
         .catch(err => {
           console.log(err)
         })
-
-
-      this.dialogFormVisible = false
     }
   }
 }

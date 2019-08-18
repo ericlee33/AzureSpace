@@ -23,6 +23,11 @@ export default new Router({
       path: '/editwebarticle',
       name: 'editwebarticle',
       component: () => import('./EditWebArticle.vue')
+    },
+    {
+      path: '/accountpermission',
+      name: 'accountpermission',
+      component: () => import('./AccountPermission.vue')
     }
   ]
 })

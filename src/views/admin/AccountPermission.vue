@@ -1,22 +1,20 @@
 <template>
     <!-- 获取所有的前端心得数据 -->
     <div class="admin-web">
-      <!-- 添加按钮 -->
-      <el-button type="primary" @click="goAddArticle">添加心得</el-button>
       <!-- 搜索栏 -->
       <!-- element中的过滤方法 -->
-       <el-table :data="tableData.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
+       <el-table :data="tableData.filter(data => !search || data.account.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
         <el-table-column
-          label="文章标题"
-          prop="title">
+          label="帐号"
+          prop="account">
         </el-table-column>
         <el-table-column
           label="创建时间"
           prop="created_time">
         </el-table-column>
         <el-table-column
-          label="文章类别"
-          prop="category">
+          label="帐号权限(0为只能评论,1为可以进入后台管理系统进行操作)"
+          prop="status">
         </el-table-column>
         <el-table-column
           align="right">
@@ -24,12 +22,9 @@
             <el-input
               v-model="search"
               size="mini"
-              placeholder="输入文章标题的关键字进行搜索"/>
+              placeholder="输入帐号进行搜索"/>
           </template>
           <template slot-scope="scope">
-            <el-button
-              size="mini"
-              @click="handleEdit(scope.$index, scope.row)">修改</el-button>
             <el-button
               size="mini"
               type="danger"
@@ -53,29 +48,25 @@ export default {
     }
   },
   methods: {
-    handleEdit(index, row) {
-      const id = (index, row)._id
-      this.$router.push({ name: "editwebarticle", params: { id } })
-    },
     handleDelete(index, row) {
       const id = (index, row)._id
-      this.$axios.post('/api/deleteblog',{id: id})
+      this.$axios.post('/api/deleteaccount',{id: id})
         .then(res => {
         if(res.data.err_code === 0){
             this.$message('删除成功!')
-            this.getArticle()
+            this.getAccount()
           }
         })
         .catch(err => {
           console.log(err)
         })
     },
-    getArticle() {
-      this.$axios.post('/api/getblog')
+    getAccount() {
+      this.$axios.post('/api/getaccount')
         .then(res => {
           // console.log(res)
           // console.log(res.data.blogs)
-          this.tableData = res.data.blogs
+          this.tableData = res.data.data
 
           // console.log(this.tableData[0].created_time)
 
@@ -87,13 +78,10 @@ export default {
       .catch(err => {
         console.log(err)
       })
-    },
-    goAddArticle() {
-      this.$router.push({ name: "addwebarticle", params: {} })
     }
   },
   created() {
-    this.getArticle()
+    this.getAccount()
   }
 
 }
