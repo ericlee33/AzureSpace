@@ -13,9 +13,10 @@ export default new Vuex.Store({
     login(state) {
       state.loginFlag = false
       // 从localstorage取出user字符串
+      
       let user = window.localStorage.getItem('user')
       user = JSON.parse(user)
-      
+
       // 判断是否登录过
       if(user) {
         state.loginFlag = true
@@ -23,6 +24,6 @@ export default new Vuex.Store({
     }
   },
   actions: {
-
+  
   }
 })

@@ -65,6 +65,7 @@ export default {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    margin-top: 5%;
   }
   .content {
     line-height: 50px;

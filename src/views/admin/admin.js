@@ -39,7 +39,20 @@ import '../../assets/css/animate.css'
 import Admin from './App.vue'
 import router from './router'
 import store from './store'
-
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) {
+    // 判断登录的状态码,如果为1 就证明可以进入管理系统
+    if (JSON.parse(localStorage.getItem("user")).status === 1) {
+      next();
+    } else {
+      next({
+        path: "/error"
+      });
+    }
+  } else {
+    next();
+  }
+});
 Vue.config.productionTip = false
 
 new Vue({

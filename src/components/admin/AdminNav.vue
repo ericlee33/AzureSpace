@@ -10,17 +10,17 @@
         @close="handleClose">
         <el-menu-item index="1" @click="goAdminWebArticle">
           <i class="el-icon-menu"></i>
-          <span slot="title">添加前端心得</span>
+          <span slot="title">文章操作</span>
         </el-menu-item>
         <el-menu-item index="2" @click="goAccountPermission">
           <i class="el-icon-menu"></i>
           <span slot="title">帐号权限</span>
         </el-menu-item>
-        <!-- <el-menu-item index="3">
+        <el-menu-item index="3" @click="goMessageBoard">
           <i class="el-icon-document"></i>
-          <span slot="title">导航三</span>
+          <span slot="title">留言板</span>
         </el-menu-item>
-        <el-menu-item index="4">
+        <!-- <el-menu-item index="4">
           <i class="el-icon-setting"></i>
           <span slot="title">导航四</span>
         </el-menu-item> -->
@@ -48,6 +48,9 @@
       },
       goAccountPermission(){
         this.$router.push({ name: 'accountpermission', params: {} })
+      },
+      goMessageBoard() {
+        this.$router.push({ name: "messageboard", params: {} })
       },
       navHeight() {
         // document.getElementById('admin-nav-container').style.height=document. +'px'

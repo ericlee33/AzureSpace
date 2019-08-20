@@ -34,9 +34,7 @@ export default {
     };
     var validatePass = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入密码'));
-      }
-        // callback();
+        callback(new Error('请输入密码'))
     }
     return {
       // 表单
@@ -64,7 +62,7 @@ export default {
         account: this.ruleForm.account,
         password: this.ruleForm.pass
       }
-      user = JSON.stringify(user)
+      
       // 请求登录接口
       this.$axios.post('/api/login',{
         account: this.ruleForm.account,
@@ -77,8 +75,10 @@ export default {
             this.ruleForm.account = ''
             this.ruleForm.pass = ''
 
+            user.status = res.data.user.status
+            user = JSON.stringify(user)
             window.localStorage.setItem('user', user)
-            
+
             this.$store.commit('login')
             this.dialogFormVisible = false
           }

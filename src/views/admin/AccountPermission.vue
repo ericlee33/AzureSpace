@@ -1,6 +1,6 @@
 <template>
     <!-- 获取所有的前端心得数据 -->
-    <div class="admin-web">
+    <div class="admin-ap">
       <!-- 搜索栏 -->
       <!-- element中的过滤方法 -->
        <el-table :data="tableData.filter(data => !search || data.account.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
@@ -50,16 +50,33 @@ export default {
   methods: {
     handleDelete(index, row) {
       const id = (index, row)._id
-      this.$axios.post('/api/deleteaccount',{id: id})
-        .then(res => {
-        if(res.data.err_code === 0){
-            this.$message('删除成功!')
-            this.getAccount()
-          }
-        })
-        .catch(err => {
-          console.log(err)
-        })
+       this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+
+          this.$axios.post('/api/deleteaccount',{id: id})
+              .then(res => {
+              if(res.data.err_code === 0){
+                  this.getAccount()
+                }
+              })
+              .catch(err => {
+                console.log(err)
+              })
+
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
+     
     },
     getAccount() {
       this.$axios.post('/api/getaccount')
@@ -88,7 +105,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.admin-web {
+.admin-ap {
   padding: 1%;
 }
 

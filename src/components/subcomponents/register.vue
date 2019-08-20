@@ -80,7 +80,8 @@ export default {
     submitFormRegister() {
       let user = {
         account: this.ruleForm.account,
-        password: this.ruleForm.pass
+        password: this.ruleForm.pass,
+        status: 0
       }
       user = JSON.stringify(user)
       // 向注册接口发送请求

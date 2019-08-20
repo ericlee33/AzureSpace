@@ -32,7 +32,7 @@
 
     </div>
 
-    <transition class="hello" enter-active-class="animated rotateInDownLeft">
+    <transition class="hello" enter-active-class="animated bounce">
       <div class="helloWords" v-show="helloFlag">Youth,like the praise of the spring</div>
     </transition>
   </div>
@@ -73,7 +73,16 @@ export default {
       this.helloFlag = !this.helloFlag
     },
     goAdmin() {
-      window.location.href = '/admin.html'
+      let user = JSON.parse(localStorage.getItem("user"))
+
+      if(user.status === 1){
+        window.location.href = '/admin.html'
+      }else {
+        this.$alert('对不起,您的权限不够', '管理权限', {
+          confirmButtonText: '确定'
+        });
+      }
+
     },
     outLogin() {
       window.localStorage.removeItem('user')

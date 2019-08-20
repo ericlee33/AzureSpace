@@ -24,9 +24,16 @@
     <!-- 评论区 -->
     <div class="get-comment-container">
 
-      <h3>评论~</h3>
+      <h3><i class="el-icon-chat-dot-square"> 有( {{ commentsnumber }} )个小伙伴在吐槽~</i></h3>
       <hr>
       <!-- 评论内容 -->
+      <!-- <div class="block">
+  <span class="demonstration">页数较少时的效果</span>
+  <el-pagination
+    layout="prev, pager, next"
+    :total="50">
+  </el-pagination>  
+</div> -->
       <div class="getcomment" v-for="(item,i) in comments" :key="i">
         <div class="header">
           <span class="floor">第{{ i+1 }}楼</span>
@@ -35,7 +42,8 @@
         </div>
         <p class="content">
           {{ item.content }}
-          <span class="delete" @click="deleteMessage(item._id)">删除</span>
+          <span class="reply">回复</span> 
+           <!-- @click="replyMessage(item._id)" -->
         </p>
       </div>
     </div>
@@ -48,6 +56,7 @@ export default {
   data(){
     return{
       comments: [],
+      commentsnumber: '',
       formLabelAlign: {
         nickname: '',
         content: ''
@@ -81,19 +90,7 @@ export default {
       this.$axios.get('/api/getmessageboard')
         .then(res => {
           this.comments = res.data.data
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    },
-    // 删除消息
-    deleteMessage(id) {
-      this.$axios.post('/api/deletemessageboard/' + id)
-        .then(res => {
-          if(res.data.err_code === 0) {
-            this.$message('删除成功')
-            this.getMessageBoard()
-          }
+          this.commentsnumber = res.data.data.length
         })
         .catch(err => {
           console.log(err)
@@ -107,7 +104,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+@titlecolor:#00A67C;
 .comment-container {
   h3 {
     height: 50px;
@@ -120,6 +117,10 @@ export default {
     h3 {
       height: 50px;
       line-height: 50px;
+
+      i {
+        font-size: 20px;
+      }
     }
     .getcomment {
       height: 90px;
@@ -139,11 +140,11 @@ export default {
         .floor {
           float: left;
           margin-right: 1%;
-          color: rgba(0, 62, 233, 0.972);
+          color: @titlecolor;
         }
         .nickname {
           float: left;
-          color: rgba(0, 62, 233, 0.972);
+          color: @titlecolor;
         }
         .time {
           float: right;
@@ -154,7 +155,7 @@ export default {
         font-size: 16px;
         color: #777;
 
-        .delete {
+        .reply {
           float: right;
           cursor: pointer;
         }
