@@ -10,7 +10,7 @@
 
 如果有什么问题，欢迎在我的个人空间中的留言板上留言！
 
-![image](https://github.com/Azure33/azureSpace/tree/master/doc/azurespace.gif)
+![image](https://github.com/Azure33/azureSpace/blob/master/doc/azurespace.gif)
 
 ## 前端本地运行前安装依赖
 
