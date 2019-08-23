@@ -1,12 +1,6 @@
 <template>
   <div>
-    <!-- <div class="block">
-      <el-carousel height="350px">
-        <el-carousel-item v-for="item in images" :key="item.src">
-          <img :src="item.src" alt="" ref="cimages">
-        </el-carousel-item>
-      </el-carousel>
-    </div> -->
+    <!-- 轮播图 -->
     <div class="wrapper">
       <swiper :options="swiperOption" >
         <swiper-slide v-for='item in images' :key="item.id">

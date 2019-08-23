@@ -1,10 +1,10 @@
 <template>
   <div class="aboutme">
+
     <div class="box-card">
       <div class="header">
         <span><i class="el-icon-right"></i> 我的名片 <i class="el-icon-back"></i></span>
-       
-    
+
       </div>
       <div class="text">
         <div class="imgContact">
@@ -32,6 +32,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 <script>

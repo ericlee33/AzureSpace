@@ -11,10 +11,20 @@
           <p class="readinfo"> > 点击阅读全文 </p>
         </div>
         <p class="content" v-html="$options.filters.ellipsis(item.content)"></p>
+        <p class="category"><i class="el-icon-paperclip"> {{ item.category }}</i></p>
         <p class="time"><i class="el-icon-time"></i> {{ item.created_time | dateFormat }}</p>
       </div>
     </div>
 
+    <!-- 分页，后台配合 -->
+    <el-pagination
+      @current-change="handleCurrentChange"
+      :current-page="currentPage"
+      :page-size="size"
+      layout="total, prev, pager, next" 
+      :page-count="count"
+      :total="total">
+    </el-pagination>
   </div>
 </template>
 
@@ -24,25 +34,55 @@ export default {
   data(){
     return{
       article:[
-      ]
+      ],
+      currentPage: 1,
+      size: 5,
+      total: null,
+      count: 1
+      
     }
   },
   methods: {
     getArticle() {
-      this.$axios.post('/api/getblog',{category: '个人随笔'})
+      let start = (this.currentPage - 1) * this.size
+      let pagesize = this.size
+    
+
+      this.$axios.post('/api/getblog',{start: start, pagesize: pagesize, category:'个人随笔'})
         .then(res => {
-          // console.log(res)
-          // console.log(res.data.blogs)
-          this.article = res.data.blogs
+          if(res.data.err_code === 0){
+            this.article = res.data.blogs
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+          
+      
+    },
+    getLength() {
+      this.$axios.post('/api/bloglength',{category:'个人随笔'})
+        .then(res => {
+          if(res.data.err_code === 0){
+            this.total = res.data.blogslength
+            this.count = Math.ceil(res.data.blogslength / this.size)
+            }
         })
     },
     // 点击文章查看详细内容
     goBlogInfo(id) {
       this.$router.push({ name: "bloginfo", params: { id } }); 
+    },
+    // 点击页数时，获取后台数据
+    handleCurrentChange(val) {
+        // console.log(`当前页: ${val}`);
+        this.currentPage = val
+        this.getArticle()
     }
   },
   created(){
     this.getArticle()
+    this.getLength()
   }
 }
 </script>
@@ -52,7 +92,7 @@ export default {
 
 .home-container {
   .blog-container{
-
+    margin-bottom: 10px;
     .articles {
       position: relative;
       padding: 2%;
@@ -81,13 +121,8 @@ export default {
           font-size: 20px;
           color: @titlecolor;
           text-shadow: 2px 2px 15px white;
-          // transform: rotateX(360deg);
-          // transition: all 1s ease 1s;
-          // &:hover {
-          //   transform: rotateX(360deg);
-          //   transition: all 1s linear;
-          // }
         }
+        
         .readinfo {
           font-size: 14px;
           margin-top: 10px;
@@ -98,6 +133,11 @@ export default {
         margin-bottom: 20px;
         font-size: 16px;
         line-height: 40px;
+      }
+      .category {
+        position: absolute;
+        bottom: 5px;
+        right: 200px;
       }
       .time {
         position: absolute;

@@ -6,26 +6,32 @@
       <!-- 搜索栏 -->
       <!-- element中的过滤方法 -->
        <el-table :data="tableData.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
+
         <el-table-column
           label="文章标题"
           prop="title">
         </el-table-column>
+
         <el-table-column
           label="创建时间"
           prop="created_time">
         </el-table-column>
+
         <el-table-column
           label="文章类别"
           prop="category">
         </el-table-column>
+
         <el-table-column
           align="right">
+
           <template slot="header" slot-scope="scope">
             <el-input
               v-model="search"
               size="mini"
               placeholder="输入文章标题的关键字进行搜索"/>
           </template>
+
           <template slot-scope="scope">
             <el-button
               size="mini"
@@ -35,6 +41,7 @@
               type="danger"
               @click="handleDelete(scope.$index, scope.row)">删除</el-button>
           </template>
+
         </el-table-column>
       </el-table>
     </div>
@@ -92,8 +99,6 @@ export default {
     getArticle() {
       this.$axios.post('/api/getblog')
         .then(res => {
-          // console.log(res)
-          // console.log(res.data.blogs)
           this.tableData = res.data.blogs
 
           // console.log(this.tableData[0].created_time)

@@ -27,6 +27,9 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
+              @click="handleEdit(scope.$index, scope.row)">修改</el-button>
+            <el-button
+              size="mini"
               type="danger"
               @click="handleDelete(scope.$index, scope.row)">删除</el-button>
           </template>
@@ -48,14 +51,37 @@ export default {
     }
   },
   methods: {
+    handleEdit(index, row) {
+      const id = (index, row)._id
+      let status = (index, row).status
+      if(status === 1) {
+        status = 0
+      }else {
+        status = 1
+      }
+      this.$axios.post('/api/editaccount', { id:id, status: status })
+        .then(res => {
+          if(res.data.err_code === 0) {
+            this.getAccount()
+            this.$message({
+              type: 'success',
+              message: '修改成功!'
+            })
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
     handleDelete(index, row) {
       const id = (index, row)._id
+
        this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-
           this.$axios.post('/api/deleteaccount',{id: id})
               .then(res => {
               if(res.data.err_code === 0){
@@ -69,20 +95,18 @@ export default {
           this.$message({
             type: 'success',
             message: '删除成功!'
-          });
+          })
         }).catch(() => {
           this.$message({
             type: 'info',
             message: '已取消删除'
-          });          
-        });
-     
+          })       
+        })
     },
+
     getAccount() {
       this.$axios.post('/api/getaccount')
         .then(res => {
-          // console.log(res)
-          // console.log(res.data.blogs)
           this.tableData = res.data.data
 
           // console.log(this.tableData[0].created_time)
@@ -97,6 +121,7 @@ export default {
       })
     }
   },
+
   created() {
     this.getAccount()
   }

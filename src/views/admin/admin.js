@@ -15,7 +15,7 @@ Vue.filter('dateFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
 // 过滤文字.当大于规定值时,后面的显示为省略号
 Vue.filter('ellipsis',function(value){
   if (!value) return "";
-  if (value.length > 30) {
+  if (value.length > 100) {
     return value.slice(0, 100) + "...";
   }
   return value;
@@ -32,13 +32,16 @@ Vue.prototype.$axios = axios
 
 // 引入normalize.css
 import '../../assets/css/normalize.css'
+// 我个人的设置
 import '../../assets/css/mySettting.css'
+// animate实现部分动画
 import '../../assets/css/animate.css'
 
 // 引入app,router,store
 import Admin from './App.vue'
 import router from './router'
 import store from './store'
+// 路由守卫
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth) {
     // 判断登录的状态码,如果为1 就证明可以进入管理系统

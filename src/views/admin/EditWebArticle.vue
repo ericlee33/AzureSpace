@@ -5,6 +5,7 @@
       <div class="header">
         <span>请选择要添加的的文章类型: </span>
         <el-radio-group v-model="radio">
+          <!-- 选择一个类型 -->
           <el-radio-button label="前端技术"></el-radio-button>
           <el-radio-button label="个人随笔"></el-radio-button>
         </el-radio-group>
@@ -25,6 +26,7 @@
           <el-button type="primary" @click="backToWebAdmin">返回管理界面</el-button>
         </el-form-item>
       </el-form>
+
     </div>
   </div>
 </template>

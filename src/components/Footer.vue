@@ -38,7 +38,7 @@ export default {
       margin-top: 10px;
       color: #333;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 }

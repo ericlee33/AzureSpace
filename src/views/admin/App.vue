@@ -3,9 +3,9 @@
     <div class="nav">
       <admin-nav></admin-nav>
     </div>
+    <!-- 内容区域 -->
     <div class="right">
       <router-view></router-view>
-      <!-- <admin-add></admin-add> -->
     </div>
   </div>
 </template>

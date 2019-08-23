@@ -1,0 +1,38 @@
+"_id","__v","category","content","created_time","title"
+"5d53b8c970167e20d845e222","0","个人随笔","直到午牌时分，井底三人才先后醒转。第一个醒的是王语嫣，她功力本浅，内力虽然全失，但原来并没多少，受损也就无几。她醒转后自然立时便想到段誉，其时虽是光天白日，深井之中仍是目不见物，她伸手一摸，碰到了段誉，叫道：“段郎，段郎，你……你……你怎么了？”不听得段誉的应声，只道他已被鸠摩智扼死，不禁抚“尸”痛哭，将他紧紧抱在胸前，哭道：“段郎，段郎，你对我这么情深意重，我却没有一天好言语、好颜色对你，我只盼日后丝萝得托乔木，好好的补报于你，哪知道……哪知道……我俩竟恁地命苦，今日你命丧恶僧之手……”","14/8/2019 07:31:21.899","天龙八部经典桥段"
+"5d543112dd65972d2059ac10","0","前端技术","1.flex子项目在主轴的缩放比例，不指定flex属性，则不参与伸缩分配\n
+min-width 最小值 min-width: 280px 最小宽度 不能小于 280\n
+max-width: 1280px 最大宽度 不能大于 1280\n
+2.flex-direction调整主轴方向（默认为水平方向）\n
+flex-direction: column 垂直排列\n
+flex-direction: row 水平排列\n
+3、justify-content调整主轴对齐（水平对齐）\n
+4、align-items调整侧轴对齐（垂直对齐）
+flex-wrap控制是否换行","14/8/2019 16:04:34.848","flex的一些基本属性"
+"5d551e0e9df7c314e4dabf2a","0","前端技术","我在进行axios渲染后端标签时遇到了一个问题<br/>
+由于想渲染时在v-html使用过滤器将文字的显示个数限制在指定的个数<br/>
+但是发现在v-html中似乎无法使用过滤器<br/>
+通过查找网上资料最后找到了解决办法<br/>v-html=""$options.filters.FILTERNAME(args)""或<br/>
+:inner-html.prop=""args | FILTERNAME"".这种形式,就可以解决问题了!","15/8/2019 08:55:42.543","v-html中使用过滤器的问题"
+"5d56844a5a2e2c22cc4b293c","0","前端技术","在做博客文章管理系统时遇到了一些问题<br/>
+由于管理系统页面整体都使用了flex布局,导致每个模块的高度使用height:100%也无法撑起来,最后发现了一些原因<br/>
+由于flex布局触发了bfc,导致一些布局上的问题,一些需要让高度与页面相等的组件添加height:100%;
+而且App.vue中加了scoped导致html,body{height:100%;width:100%}失效,下次一定要注意一下这个问题<br/>","16/8/2019 10:24:10.199","在后台布局时出现的一些小问题"
+"5d5684f95a2e2c22cc4b293d","0","前端技术","由于我对后端实现过滤的方法不太熟悉,于是便想利用main.js中已经定义好的dateformat过滤器进行时间的过滤,但是由于管理表格使用的是element组件,无法在标签属性中进行过滤<br/>
+最后解决办法是,在方法中进行过滤.<br/>
+由于在方法中，this是可以访问到Vue这个实例的，所以可以在$option上拿到过滤器{<br/>
+this.tableData.forEach(i => {<br/>
+i.created_time = this.$options.filters['dateFormat'](i.created_time){<br/>
+})","16/8/2019 10:27:05.211","过滤器过滤问题"
+"5d57dc88435e952120153499","0","个人随笔","123","17/8/2019 10:52:56.938","123"
+"5d5832c6e3331f3300f210f4","0","前端技术","目标是: 想让button按钮点击实现a标签一样的跳转外链<br />一开始想通过this.$router.path = 地址 来进行跳转<br />运行后发现报错read only,发现这是个只读参数<br />不能用之后回忆了一下a标签的原理,实际是href的改变<br />于是通过window.location.href = e 成功进行了地址跳转","17/8/2019 17:00:54.052","想通过按钮的点击事件实现vue多页面跳转"
+"5d597da02ce8c52f347acb41","0","前端技术","在使用express-session在服务端保持session时,调试后端时出现了错误,<br/>
+Nodejs Error: Can't set headers after they are sent<br/>
+router.post('/api/judgelogin', function (req, res, next) {<br /> <br />    if(req.session.user){<br />      return res.status(200).json({<br />        err_code: 0,<br />        message: 'OK'<br />      })<br />    }<br/>
+
+上网找了一下原因：客户端发出一次请求，服务器给出两次及以上响应<br/>
+
+解决方案：清理多余次数响应；每次响应后立马return掉函数<br/>
+最后发现是忘记在if中return<br/>","18/8/2019 16:32:32.432","Nodejs Error错误解决"
+"5d5ad60e875fc51a14349c8f","0","个人随笔","小时候，<br />乡愁是一枚小小的邮票，<br />我在这头，<br />母亲在那头。<br /><br />长大后，<br />乡愁是一张窄窄的船票，<br />我在这头，<br />新娘在那头。<br /><br />后来啊，<br />乡愁是一方矮矮的坟墓，<br />我在外头，<br />母亲在里头。<br /><br />而现在，<br />乡愁是一湾浅浅的海峡，<br />我在这头，<br />大陆在那头","19/8/2019 17:02:06.284","愿祖国永远昌盛"
+"5d5d2037e9d1e92dd0f68c7c","0","前端技术","关于vue项目报错：this relative module was not found<br />This relative module was not found:<br /><br />* ./vue-temp/vue-editor-bridge in ./node_modules/_babel-loader@7.1.5@babel-loader/lib!./node_modules/_vue-loader@13.7.3@vue-loader/lib/selector.js?type=script&index=0!./src/views/useCarDetail.vue<br />最后发现原因为script第一行增加了一行代码import func from './vue-temp/vue-editor-bridge'; 自己并未引入这个东西，可能是vscode编辑器自动补全的问题","21/8/2019 10:43:03.971","关于vue项目报错vue-editor-bridge"

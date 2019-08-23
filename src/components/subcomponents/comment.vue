@@ -59,7 +59,7 @@ export default {
     sendMessageBoard(){
       // console.log(this.formLabelAlign)
       // console.log(this.id)
-      this.$axios.post('/api/comment/' + this.id,{
+      this.$axios.post('/api/comment',{
           id: this.formLabelAlign.id,
           nickname: this.formLabelAlign.nickname,
           content: this.formLabelAlign.content
@@ -129,11 +129,11 @@ export default {
         .floor {
           float: left;
           margin-right: 1%;
-          color: rgba(0, 62, 233, 0.972);
+          color: #00aa37;
         }
         .nickname {
           float: left;
-          color: rgba(0, 62, 233, 0.972);
+          color: #00aa37;
         }
         .time {
           float: right;
@@ -141,7 +141,7 @@ export default {
       }
       .content{
         font-weight: bold;
-        font-size: 20px;
+        font-size: 16px;
         color: #777;
       }
     }

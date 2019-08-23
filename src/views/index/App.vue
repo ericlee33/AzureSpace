@@ -1,21 +1,36 @@
 <template>
   <div id="app">
     <!-- 引入头部组件 --> 
-    <Header></Header>
+    <transition enter-active-class="animated fadeIn">
+      <Header v-show="show"></Header>
+    </transition>
 
-    <div class="w app-content">
+      <!-- 内容 -->
+      <div class="w app-content" >
 
-      <div class="container">
-        <router-view/>
+        <transition enter-active-class="animated fadeInLeft">
+          <div class="container" v-show="show">
+
+            <transition enter-active-class="animated fadeIn">
+              <router-view v-show="show"></router-view>
+            </transition>
+
+          </div>
+        </transition>
+
+        <!-- 引入右侧边栏组件 -->
+        <transition enter-active-class="animated fadeInRight">
+          <Aside id="aside" v-show="show"></Aside>
+        </transition>
+
+        <!-- 清除浮动影响,为了让container左右阴影不被overflow:hidden替代,使用clear:both -->
+        <div class="clear"></div>
       </div>
-
-      <!-- 引入右侧边栏组件 -->
-      <Aside id="aside"></Aside>
-      <!-- 清除浮动影响,为了让container左右阴影不被overflow:hidden替代,使用clear:both -->
-      <div class="clear"></div>
-    </div>
     <!-- 引入底部组件 -->
     <Footer></Footer>
+    <div class="button">
+    <el-button type="primary" id="gotop" style="display:none;position:fixed;right:5%;bottom:20%;width:50px;height:50px;text-align:center;padding:13px;border-radius:50%;" @click="gotop()"><i class="el-icon-caret-top" style="font-weight:bold;font-size:20px;width:100%;height:100%;"></i></el-button>
+    </div>
   </div>
 </template>
 <script>
@@ -26,7 +41,7 @@ import Aside from '../../components/Aside.vue'
 export default {
   data(){
     return {
-      
+      show: false
     }
   },
   methods: {
@@ -36,10 +51,29 @@ export default {
         duration: 3500,
         offset: 200
       })
+    },
+    // 回到顶部
+    gotop() {
+      document.documentElement.scrollTop = document.body.scrollTop = 0;
+    },
+    scrollToTop(el) {
+      let topBtn = document.getElementById('gotop');
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop > 300) {
+        topBtn.style.display = 'block';
+      } else {
+        topBtn.style.display = 'none';
+      }
     }
   },
   mounted() {
     this.open()
+    this.show = true
+    // 监听滚动
+    window.addEventListener('scroll', this.scrollToTop)
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.scrollToTop); 
   },
   components: {
     Header,
@@ -54,8 +88,12 @@ html {
   width: 100%;
   background: url('../../assets/images/bg-cover.png');
 }
+// 避免动画使页面在加载时出现左右滚动条
+#app {
+  overflow: hidden;
+}
 .app-content {
-  padding: 40px 0;
+  padding: 4% 0;
   min-height:1000px;
 
   .container {
@@ -70,6 +108,10 @@ html {
   }
   .clear {
     clear: both;
+  }
+  .button {
+    width: 50px;
+    height: 50px;
   }
 }
 

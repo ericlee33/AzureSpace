@@ -65,10 +65,7 @@ export default {
     },
     backToWebAdmin() {
       this.$router.go(-1)
-    },
-    // web(e) {
-    //  this.formLabelAlign.category = e.srcElement.innerHTML
-    // }
+    }
   },
   watch: {
     radio: function(newval){

@@ -1,38 +1,43 @@
 <template>
   <div id="header-container" class="header-container">
+    <!-- 欢迎的千纸鹤 -->
     <transition 
-      enter-active-class="animated rubberBand">
+      enter-active-class="animated jello">
       <div class="deco" v-show="helloFlag"></div>
     </transition>
 
     <!-- 实现导航栏吸顶 -->
-    <div :class="navBarFixed == true ? 'navBarWrap' :'navBar'">
+    <transition enter-active-class="animated rubberBand">
+      <div :class="navBarFixed == true ? 'navBarWrap' :'navBar'" v-show="helloFlag">
 
-        <div class="nav-container w">
-          <!-- 导航栏以及logo -->
-          <h1 class="logo" >AzureSpace</h1>
-          <ul>
-            <router-link to="/bloglist">前端技术</router-link>
-            <router-link to="/essaylist">个人随笔</router-link>
-            <router-link to="/messageboard">留言板</router-link>
-            <router-link to="/newslist">新闻</router-link>
-            <router-link to="/aboutme">关于我</router-link>
-          </ul>
+          <div class="nav-container w">
+            <!-- 导航栏以及logo -->
+            <h1 class="logo" @click="goHome">AzureSpace</h1>
+            <ul>
+              <!-- 默认在全部文章 -->
+              <router-link to="/bloglist">全部文章</router-link>
+              <router-link to="/weblist">前端技术</router-link>
+              <router-link to="/essaylist">个人随笔</router-link>
+              <router-link to="/messageboard">留言板</router-link>
+              <router-link to="/newslist">新闻</router-link>
+              <router-link to="/aboutme">关于我</router-link>
+            </ul>
 
-          <!-- 注册 -->
-          <div class="buttons" v-if="!loginFlag">
-            <register></register>
-            <login></login>
+            <!-- 注册 -->
+            <div class="buttons" v-if="!loginFlag">
+              <register></register>
+              <login></login>
+            </div>
+            <div v-if="loginFlag">
+              <el-button type="danger" size="mini" @click="outLogin">登出</el-button>
+              <el-button type="success" size="mini" @click="goAdmin">进入管理系统</el-button>
+            </div>
           </div>
-          <div v-if="loginFlag">
-            <el-button type="danger" size="mini" @click="outLogin">登出</el-button>
-            <el-button type="success" size="mini" @click="goAdmin">进入管理系统</el-button>
-          </div>
-        </div>
 
-    </div>
-
-    <transition class="hello" enter-active-class="animated bounce">
+      </div>
+    </transition>
+    <!-- 欢迎的文字 -->
+    <transition class="hello" enter-active-class="animated swing">
       <div class="helloWords" v-show="helloFlag">Youth,like the praise of the spring</div>
     </transition>
   </div>
@@ -68,7 +73,7 @@ export default {
         } else {
           this.navBarFixed = false
         }
-     },
+    },
     show() {
       this.helloFlag = !this.helloFlag
     },
@@ -89,27 +94,11 @@ export default {
       this.$message("登出成功")
       // this.judgeLogin()
       this.$store.commit('login')
+    },
+    goHome() {
+      this.$router.push({name: "home"})
     }
-
-    // 动画生命周期钩子
-    // beforeEnter: function (el) {
-    //   el.style.transfrom = "translate(0,-293px)"
-    // },
-    // // 当与 CSS 结合使用时
-    // // 回调函数 done 是可选的
-    // enter: function (el, done) {
-    //   el.offsetWidth
-    //   el.style.transfrom = "translate(0,300px)"
-    //   el.style.transition = "all 1s ease"
-      
-    //   // ...
-    //   // done()
-    // },
-    // afterEnter: function (el) {
-    //   // ...
-    // },
-   },
-
+  },
   created() {
     this.$store.commit('login')
   },
@@ -211,14 +200,16 @@ export default {
 .helloWords {
     position: absolute;
     text-align: center;
-    width: 400px;
+    width: 600px;
     height: 200px;
     line-height: 200px;
     left: 50%;
     top: 50%;
-    margin-left: -200px;
+    margin-left: -300px;
     margin-top: -100px;
+    font-size: 25px;
+    color: skyblue;
+    text-shadow: 0 0 5px azure;
     // transform: translate(-50%,-50%);
-    color: white;
 }
 </style>

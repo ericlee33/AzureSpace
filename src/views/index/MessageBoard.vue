@@ -15,7 +15,7 @@
           <el-input type="textarea" v-model="formLabelAlign.content" placeholder="来都来了,何不留个足迹呢~"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="sendMessageBoard">发表</el-button>
+          <el-button type="success" @click="sendMessageBoard">发表</el-button>
         </el-form-item>
       </el-form>
 
@@ -24,25 +24,19 @@
     <!-- 评论区 -->
     <div class="get-comment-container">
 
-      <h3><i class="el-icon-chat-dot-square"> 有( {{ commentsnumber }} )个小伙伴在吐槽~</i></h3>
+      <h3><i class="el-icon-chat-dot-square"></i> 有( {{ commentsnumber }} )个小伙伴正在吐槽~</h3>
       <hr>
-      <!-- 评论内容 -->
-      <!-- <div class="block">
-  <span class="demonstration">页数较少时的效果</span>
-  <el-pagination
-    layout="prev, pager, next"
-    :total="50">
-  </el-pagination>  
-</div> -->
       <div class="getcomment" v-for="(item,i) in comments" :key="i">
+        
+        
         <div class="header">
-          <span class="floor">第{{ i+1 }}楼</span>
+          <span class="avatar"><img src="../../assets/images/comment-avatar.png" alt=""></span>
           <span class="nickname">{{ item.nickname }}</span>
           <span class="time">{{ item.created_time | dateFormat }}</span>
         </div>
         <p class="content">
           {{ item.content }}
-          <span class="reply">回复</span> 
+          <!-- <span class="reply">回复</span>  -->
            <!-- @click="replyMessage(item._id)" -->
         </p>
       </div>
@@ -64,16 +58,15 @@ export default {
     }
   },
   methods: {
-    // 发送柳岩数据
+    // 发送留言数据
     sendMessageBoard(){
-      // console.log(this.formLabelAlign)
-      // console.log(this.id)
       this.$axios.post('/api/addmessageboard',{
           nickname: this.formLabelAlign.name,
           content: this.formLabelAlign.content
         })
         .then(res => {
           if(res.data.err_code === 0){
+            // 清空数据
             this.formLabelAlign.name = ''
             this.formLabelAlign.content = ''
             this.$message('留言成功!')
@@ -123,7 +116,7 @@ export default {
       }
     }
     .getcomment {
-      height: 90px;
+      height: 120px;
       margin-top: 2%;
       display: flex;
       flex-direction: column;
@@ -131,26 +124,36 @@ export default {
       background-color: rgba(255,255,255,.6);
       border-radius: 20px;
       box-shadow: 0 0 10px rgba(0,0,0,.3);
-      padding: 1%;
+      padding: 1.5% 2%;
 
       .header {
         overflow: hidden;
         font-weight: bold;
+        height: 50px;
+        line-height: 50px;
 
-        .floor {
+        .avatar {
           float: left;
           margin-right: 1%;
-          color: @titlecolor;
+          img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            border: 1px solid #AAA;
+          }
         }
         .nickname {
           float: left;
           color: @titlecolor;
         }
         .time {
+          line-height: 1;
           float: right;
+          font-weight: 100;
         }
       }
       .content{
+        text-indent: 10px;
         font-weight: bold;
         font-size: 16px;
         color: #777;

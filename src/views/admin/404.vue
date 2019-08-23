@@ -1,5 +1,6 @@
 <template>
   <div class="error">
+    <!-- 如果用户强行输入url地址进入后台触发404 -->
     error,您没有权限访问管理系统
   </div>
 </template>

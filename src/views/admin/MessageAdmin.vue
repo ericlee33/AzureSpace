@@ -4,33 +4,41 @@
       <!-- 搜索栏 -->
       <!-- element中的过滤方法 -->
        <el-table :data="tableData.filter(data => !search || data.nickname.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
+
         <el-table-column
           label="昵称"
           prop="nickname">
         </el-table-column>
+
         <el-table-column
           label="内容"
           prop="content">
         </el-table-column>
+
         <el-table-column
           label="创建时间"
           prop="created_time">
         </el-table-column>
+
         <el-table-column
           align="right">
+
           <template slot="header" slot-scope="scope">
             <el-input
               v-model="search"
               size="mini"
               placeholder="输入昵称进行搜索"/>
           </template>
+
           <template slot-scope="scope">
             <el-button
               size="mini"
               type="danger"
               @click="handleDelete(scope.$index, scope.row)">删除</el-button>
           </template>
+
         </el-table-column>
+
       </el-table>
     </div>
   </div>
@@ -48,8 +56,11 @@ export default {
     }
   },
   methods: {
+    // 删除数据
     handleDelete(index, row) {
+
       const id = (index, row)._id
+
        this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -78,6 +89,7 @@ export default {
         });
       
     },
+    // 从后台得到数据
     getMessage() {
       this.$axios.get('/api/getmessageboard')
         .then(res => {

@@ -7,7 +7,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/bloglist'
+      name: 'home',
+      redirect: '/weblist'
+    },
+    {
+      path: '/weblist',
+      name: 'weblist',
+      component: () => import('./WebList.vue')
     },
     {
       path: '/bloglist',
