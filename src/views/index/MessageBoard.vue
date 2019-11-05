@@ -70,6 +70,7 @@ export default {
             this.formLabelAlign.name = ''
             this.formLabelAlign.content = ''
             this.$message('留言成功!')
+            this.$store.state.commentFlag = true
             // 发送成功后,刷新评论区内容
             this.getMessageBoard()
           }
@@ -122,7 +123,7 @@ export default {
       flex-direction: column;
       justify-content: space-around;
       background-color: rgba(255,255,255,.6);
-      border-radius: 20px;
+      border-radius: 1%;
       box-shadow: 0 0 10px rgba(0,0,0,.3);
       padding: 1.5% 2%;
 

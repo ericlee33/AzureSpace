@@ -52,7 +52,7 @@ export default {
 .bloginfo-container {
   position: relative;
   background-color: rgba(255,255,255,.6);
-  border-radius: 20px;
+  border-radius: 1%;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
   padding: 3%;
   .back {
@@ -68,7 +68,7 @@ export default {
     margin-top: 5%;
   }
   .content {
-    line-height: 50px;
+    line-height: 1.5;
   }
 }
 </style>

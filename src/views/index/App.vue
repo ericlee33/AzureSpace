@@ -86,7 +86,7 @@ export default {
 html {
   height: 100%;
   width: 100%;
-  background: url('../../assets/images/bg-cover.png');
+  background: url('../../assets/images/bg1.png');
 }
 // 避免动画使页面在加载时出现左右滚动条
 #app {
@@ -97,14 +97,14 @@ html {
   min-height:1000px;
 
   .container {
-    width: 60%;
+    width: 63%;
     float: left;
-    margin-right: 5%;
+    margin-right: 2%;
   }
   #aside {
     float: left;
     width: 35%;
-    padding: 10px;
+    // padding: 10px;
   }
   .clear {
     clear: both;

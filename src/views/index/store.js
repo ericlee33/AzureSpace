@@ -6,7 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     // 监听登录状态
-    loginFlag: false
+    loginFlag: false,
+    // 监听是否有新的comment出现
+    commentFlag: false
   },
   mutations: {
     // 监听登录状态

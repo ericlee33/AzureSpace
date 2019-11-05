@@ -38,6 +38,14 @@ export default {
   },
   created() {
     this.getMessageBoard()
+  },
+  watch: {
+    '$store.state.commentFlag': function(newVal,oldVal) {
+      if(this.$store.state.commentFlag) {
+        this.getMessageBoard()
+      }
+      this.$store.state.commentFlag = false
+    }
   }
 }
 
@@ -50,7 +58,7 @@ export default {
   margin-top: 10%;
   width: 100%;
   background-color: rgba(255,255,255,.6);
-  border-radius: 20px;
+  border-radius: 1%;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
   h4 {
     line-height: 30px;
@@ -58,7 +66,7 @@ export default {
   }
   .getcomment {
     padding: 4% 0;
-    border-bottom: 1px solid #555;
+    border-bottom: 1px dotted blue;
 
     &:last-child {
       border: 0;

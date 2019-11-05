@@ -66,8 +66,8 @@ export default {
   padding: 4%;
   margin-top: 10%;
   width: 100%;
-  background-color: rgba(255,255,255,.6);
-  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 1%;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
 
   // 名片头部
@@ -79,6 +79,7 @@ export default {
   // 名片内容
   .text {
     margin-top: 2%;
+    
     .imgContact {
       padding: 0 30% 0 30%;
       display: flex;

@@ -3,7 +3,7 @@
 
     <el-button type="primary" @click="dialogFormVisible = true" size="mini">注册</el-button>
 
-    <el-dialog title="注册" :visible.sync="dialogFormVisible" :append-to-body="true" :close-on-click-modal="false" center width="25%">
+    <el-dialog title="注册" :visible.sync="dialogFormVisible" :append-to-body="true" :close-on-click-modal="false" center width="50%">
       
       <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="68px" class="demo-ruleForm">
         

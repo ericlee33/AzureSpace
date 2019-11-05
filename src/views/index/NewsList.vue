@@ -72,10 +72,13 @@ export default {
     &:first-child {
       margin: 0;
     }
+    &:hover {
+      background-color:rgba(0,0,0,0.05);
+    }
     // 新闻图片
     .img {
       border-radius: 20%;
-      width: 30%;
+      width: 300px;
       height: 150px;
       margin-right: 5%;
     }

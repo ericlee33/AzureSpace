@@ -18,7 +18,7 @@ export default {
 <style lang="less" scoped>
 .footer-container {
   min-height: 125px;
-  background: url('../assets/images/footer/footer-image.png') no-repeat center center;
+  background: url('../assets/images/footer/ft1.png') repeat center center;
   position: relative;
   &::before {
     position: absolute;

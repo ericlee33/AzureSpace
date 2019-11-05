@@ -85,7 +85,7 @@ export default {
       }else {
         this.$alert('对不起,您的权限不够', '管理权限', {
           confirmButtonText: '确定'
-        });
+        })
       }
 
     },

@@ -20,6 +20,7 @@
     <el-pagination
       @current-change="handleCurrentChange"
       :current-page="currentPage"
+      :background="true"
       :page-size="size"
       layout="total, prev, pager, next" 
       :page-count="count"
@@ -75,9 +76,9 @@ export default {
     },
     // 点击页数时，获取后台数据
     handleCurrentChange(val) {
-        // console.log(`当前页: ${val}`);
-        this.currentPage = val
-        this.getArticle()
+      this.currentPage = val
+      this.getArticle()
+      document.documentElement.scrollTop = document.body.scrollTop = window.pageYOffset = 400
     }
   },
   created(){
@@ -99,7 +100,7 @@ export default {
       min-height: 200px;
       margin-top: 4%;
       background-color: rgba(255,255,255,.6);
-      border-radius: 20px;
+      border-radius: 1%;
       box-shadow: 0 0 10px rgba(0,0,0,.3);
       
       &:first-child{
