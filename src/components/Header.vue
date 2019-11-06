@@ -40,6 +40,14 @@
     <transition class="hello" enter-active-class="animated swing">
       <div class="helloWords" v-show="helloFlag">Youth,like the praise of the spring</div>
     </transition>
+    <div class="phone">
+      <router-link to="/bloglist">全部文章</router-link>
+      <router-link to="/weblist">前端技术</router-link>
+      <router-link to="/essaylist">个人随笔</router-link>
+      <router-link to="/messageboard">留言板</router-link>
+      <router-link to="/newslist">新闻</router-link>
+      <router-link to="/aboutme">关于我</router-link>
+    </div>
   </div>
 
 </template>
@@ -154,6 +162,74 @@ export default {
     background-color: rgba(0,0,0,0.3);
   }
 
+  
+}
+
+.helloWords {
+    position: absolute;
+    text-align: center;
+    width: 600px;
+    height: 200px;
+    line-height: 200px;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -100px;
+    font-size: 25px;
+    color: skyblue;
+    text-shadow: 0 0 5px azure;
+    // transform: translate(-50%,-50%);
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .nav-container {
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+
+    h1 {
+      text-indent: -9999em;
+      background: url('../assets/images/nav/logo.png') no-repeat;
+      background-size: contain;
+      width: 50px;
+      height: 30px;
+      cursor: pointer;
+      display: none;
+    }
+    ul {
+      .nav-active {
+          color: @colorh;
+          background-color: rgba(18, 212, 212, 0.301);
+      }
+
+      a {
+        height: 30px;
+        width: 45px;
+        text-align: center;
+        float: left;
+        padding: 0px;
+        color: white;
+        font-weight: bold;
+
+        &:hover {
+          color: @colorh;
+          background-color: rgba(18, 212, 212, 0.301);
+        }
+      }
+    }
+    .buttons {
+          width: 15px;
+          display: flex;
+          justify-content: space-around;
+        }
+  }
+}
+
+@media screen and (min-width:769px){
   .nav-container {
     height: 60px;
     line-height: 60px;
@@ -195,21 +271,5 @@ export default {
           justify-content: space-around;
         }
   }
-}
-
-.helloWords {
-    position: absolute;
-    text-align: center;
-    width: 600px;
-    height: 200px;
-    line-height: 200px;
-    left: 50%;
-    top: 50%;
-    margin-left: -300px;
-    margin-top: -100px;
-    font-size: 25px;
-    color: skyblue;
-    text-shadow: 0 0 5px azure;
-    // transform: translate(-50%,-50%);
 }
 </style>

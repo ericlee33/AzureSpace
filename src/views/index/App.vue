@@ -96,6 +96,24 @@ html {
   padding: 4% 0;
   min-height:1000px;
 
+  .clear {
+    clear: both;
+  }
+  .button {
+    width: 50px;
+    height: 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #aside {
+    display: none;
+  }
+  .container {
+    width: 100%;
+    margin: 0;
+  }
+}
+@media screen and (min-width:769px){
   .container {
     width: 63%;
     float: left;
@@ -106,13 +124,5 @@ html {
     width: 35%;
     // padding: 10px;
   }
-  .clear {
-    clear: both;
-  }
-  .button {
-    width: 50px;
-    height: 50px;
-  }
 }
-
 </style>
