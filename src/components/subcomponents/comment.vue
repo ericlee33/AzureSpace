@@ -48,7 +48,6 @@ export default {
     return{
       comments: [],
       formLabelAlign: {
-        id: this.id,
         nickname: '',
         content: ''
       }
@@ -60,13 +59,13 @@ export default {
       // console.log(this.formLabelAlign)
       // console.log(this.id)
       this.$axios.post('/api/comment',{
-          id: this.formLabelAlign.id,
+          id: this.id,
           nickname: this.formLabelAlign.nickname,
           content: this.formLabelAlign.content
         })
         .then(res => {
           if(res.data.err_code === 0){
-            this.formLabelAlign.name = ''
+            this.formLabelAlign.nickname = ''
             this.formLabelAlign.content = ''
             this.$message('评论成功!')
             // 评论成功后,刷新评论区内容

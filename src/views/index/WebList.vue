@@ -33,7 +33,7 @@ export default {
       article:[
       ],
       currentPage: 1,
-      size: 6,
+      size: 8,
       total: null,
       count: 1
       

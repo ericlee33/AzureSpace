@@ -5,6 +5,11 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
+// 富文本引入
+import Vue2Editor from "vue2-editor"
+Vue.use(Vue2Editor)
+
+
 // 导入格式化时间的插件
 import moment from 'moment'
 // 定义全局的过滤器

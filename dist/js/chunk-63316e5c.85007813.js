@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-63316e5c"],{"505c":function(n,e,t){},"9d8d":function(n,e,t){"use strict";t.r(e);var c=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",{staticClass:"error"},[n._v("\n  error,您没有权限访问管理系统\n")])},r=[],s={},a=s,u=(t("ed66"),t("2877")),i=Object(u["a"])(a,c,r,!1,null,"f6e4b22a",null);e["default"]=i.exports},ed66:function(n,e,t){"use strict";var c=t("505c"),r=t.n(c);r.a}}]);
-//# sourceMappingURL=chunk-63316e5c.85007813.js.map

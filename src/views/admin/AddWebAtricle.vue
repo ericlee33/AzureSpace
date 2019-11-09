@@ -19,7 +19,12 @@
           <el-input v-model="formLabelAlign.title"></el-input>
         </el-form-item>
         <el-form-item label="文章内容" required>
-          <el-input type="textarea" v-model="formLabelAlign.content" placeholder="来都来了,何不留个足迹呢~" :rows="18"></el-input>
+          <!-- <el-input type="textarea" v-model="formLabelAlign.content" placeholder="来都来了,何不留个足迹呢~" :rows="18"></el-input> -->
+          <VueEditor style="width: 80%"
+            v-model="formLabelAlign.content"
+            useCustomImageHandler
+            @imageAdded="handleImageAdded"
+            :editorToolbar="customToolbar"></VueEditor>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="sendWebArticle">发表</el-button>
@@ -65,6 +70,28 @@ export default {
     },
     backToWebAdmin() {
       this.$router.go(-1)
+    },
+    handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+      // An example of using FormData
+      // NOTE: Your key could be different such as:
+      // formData.append('file', file)
+
+      var formData = new FormData();
+      formData.append("image", file);
+
+      axios({
+        url: "/api/images",
+        method: "POST",
+        data: formData
+      })
+        .then(result => {
+          let url = result.data.url; // Get url from response
+          Editor.insertEmbed(cursorLocation, "image", url);
+          resetUploader();
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   watch: {
