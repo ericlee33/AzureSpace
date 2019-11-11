@@ -2,12 +2,22 @@
   <div class="aboutblog">
     <p>小站已经在云上漂流了{{ days }}天了！</p>
     <p>欢迎在大家小站上留言:.ﾟヽ(｡◕‿◕｡)ﾉﾟ.:｡+ﾟ</p>
+    <p>您是第{{ guest }}位来到这里的访客</p>
   </div>
 </template>
 <script>
 export default {
   data(){
     return{
+      guest:0
+    }
+  },
+  methods: {
+    guestNum() {
+      this.$axios.get('/api/guest')
+        .then(res=>{
+          this.guest = res.data.data.guest
+        })
     }
   },
   computed: {
@@ -18,6 +28,9 @@ export default {
       let time = parseInt(days / (1000 * 60 * 60 * 24))
       return time
     }
+  },
+  created() {
+    this.guestNum()
   }
 }
 </script>
@@ -33,8 +46,9 @@ export default {
   border-radius: 1%;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
   >p {
-    &:nth-of-type(2) {
-      margin-top: 2%;
+    margin-top: 2%;
+    &:nth-of-type(1) {
+      margin-top: 0;
     }
   }
 }

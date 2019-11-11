@@ -15,8 +15,8 @@ Vue.filter('dateFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
 // 过滤文字.当大于规定值时,后面的显示为省略号
 Vue.filter('ellipsis',function(value){
   if (!value) return "";
-  if (value.length > 100) {
-    return value.slice(0, 100) + "...";
+  if (value.length > 200) {
+    return value.slice(0, 200) + "...";
   }
   return value;
 })
