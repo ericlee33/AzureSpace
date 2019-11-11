@@ -23,8 +23,7 @@
           <VueEditor style="width: 80%"
             v-model="formLabelAlign.content"
             useCustomImageHandler
-            @imageAdded="handleImageAdded"
-            :editorToolbar="customToolbar"></VueEditor>
+            @image-added="handleImageAdded"></VueEditor>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="sendWebArticle">发表</el-button>
@@ -43,7 +42,16 @@ export default {
       formLabelAlign: {
         category: '',
         title: '',
-        content: ''
+        content: '',
+        // customToolbar: [
+        //   ['bold', 'italic', 'underline'],
+        //   [{'align':''},{'align':'center'},{'align':'right'}],
+        //   [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+        //   [{'background':[]},{'color':[]}],
+        //   ['image','link'],
+        //   ['strike'],
+        //   ['clean'],
+        // ]
       }
     }
   },
@@ -77,10 +85,10 @@ export default {
       // formData.append('file', file)
 
       var formData = new FormData();
-      formData.append("image", file);
-
-      axios({
-        url: "/api/images",
+      formData.append("file", file);
+      console.log(formData)
+      this.$axios({
+        url: "/api/upload",
         method: "POST",
         data: formData
       })

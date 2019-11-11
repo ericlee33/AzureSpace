@@ -1,10 +1,10 @@
 <template>
   <div id="header-container" class="header-container">
     <!-- 欢迎的千纸鹤 -->
-    <transition 
-      enter-active-class="animated jello">
+    <!-- <transition 
+      enter-active-class="animated jello"> -->
       <div class="deco" v-show="helloFlag"></div>
-    </transition>
+    <!-- </transition> -->
 
     <!-- 实现导航栏吸顶 -->
     <transition enter-active-class="animated rubberBand">
@@ -40,14 +40,6 @@
     <transition class="hello" enter-active-class="animated swing">
       <div class="helloWords" v-show="helloFlag">Youth,like the praise of the spring</div>
     </transition>
-    <div class="phone">
-      <router-link to="/bloglist">全部文章</router-link>
-      <router-link to="/weblist">前端技术</router-link>
-      <router-link to="/essaylist">个人随笔</router-link>
-      <router-link to="/messageboard">留言板</router-link>
-      <router-link to="/newslist">新闻</router-link>
-      <router-link to="/aboutme">关于我</router-link>
-    </div>
   </div>
 
 </template>
@@ -131,7 +123,14 @@ export default {
 
 <style lang="less" scoped>
 @colorh: #00ffff;
-
+@keyframes decos {
+  0% {
+    transform: rotate(20deg) scale(2.5);
+  }
+  100% {
+    transform: rotate(0) scale(0.3);
+  }
+}
 .header-container {
   background: #060116 url('../assets/images/nav/banner.png') no-repeat right bottom;
   width: 100%;
@@ -140,12 +139,12 @@ export default {
   background-attachment: fixed;
   position: relative;
   box-shadow: 0 10px 20px skyblue;
-
   .deco {
     position: absolute;
     background: url('../assets/images/nav/deco.png');
     height: 293px;
     width: 100%;
+    animation: decos 4s linear infinite;
   }
   .navBar {
     position: fixed;

@@ -72,7 +72,7 @@ export default {
     },
     // 点击文章查看详细内容
     goBlogInfo(id) {
-      this.$router.push({ name: "bloginfo", params: { id } }); 
+      this.$router.push({ name: "essayinfo", params: { id } }); 
     },
     // 点击页数时，获取后台数据
     handleCurrentChange(val) {

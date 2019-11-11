@@ -16,9 +16,19 @@ export default new Router({
       component: () => import('./WebList.vue')
     },
     {
+      path: '/weblist/webinfo/:id',
+      name:'webinfo',
+      component: () => import('./WebInfo.vue')
+    },
+    {
       path: '/bloglist',
       name: 'bloglist',
       component: () => import('./BlogList.vue')
+    },
+    {
+      path: '/bloglist/bloginfo/:id',
+      name:'bloginfo',
+      component: () => import('./BlogInfo.vue')
     },
     {
       path: '/newslist',
@@ -34,11 +44,6 @@ export default new Router({
       path: '/aboutme',
       name:'aboutme',
       component: () => import('./AboutMe.vue')
-    },
-    {
-      path: '/bloglist/bloginfo/:id',
-      name:'bloginfo',
-      component: () => import('./BlogInfo.vue')
     },
     {
       path: '/essaylist',

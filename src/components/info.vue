@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.bloginfo-container {
+.container {
   position: relative;
   background-color: rgba(255,255,255,.6);
   border-radius: 1%;

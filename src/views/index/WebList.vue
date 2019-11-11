@@ -69,7 +69,7 @@ export default {
     },
     // 点击文章查看详细内容
     goBlogInfo(id) {
-      this.$router.push({ name: "bloginfo", params: { id } }); 
+      this.$router.push({ name: "webinfo", params: { id } }); 
     },
     handleCurrentChange(val) {
       this.currentPage = val

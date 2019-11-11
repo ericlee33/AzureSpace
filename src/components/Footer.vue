@@ -1,7 +1,7 @@
 <template>
   <div class="footer-container">
     <div class="w footer">
-      <p>Azure的个人空间</p>
+      <p>Azure的个人空间 Mounted <i>{{ days }}</i> days in Tencent Cloud</p></p>
       <p class="copyright">Copyright © 2019, azure All Rights Reserved</p>
     </div>
   </div>
@@ -10,7 +10,15 @@
 <script>
 
 export default {
-  
+  computed: {
+    days() {
+      let s1 = new Date('2019/08/20')
+      let s2 = new Date()
+      let days = s2.getTime() - s1.getTime()
+      let time = parseInt(days / (1000 * 60 * 60 * 24))
+      return time
+    }
+  }
 }
 
 </script>
@@ -39,6 +47,9 @@ export default {
       color: #333;
       font-weight: 700;
       font-size: 16px;
+      >i {
+        color: blue;
+      }
     }
   }
 }

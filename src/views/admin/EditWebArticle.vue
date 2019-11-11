@@ -22,8 +22,7 @@
           <VueEditor style="width: 80%"
             v-model="formLabelAlign.content"
             useCustomImageHandler
-            @image-added="handleImageAdded"
-            :editorToolbar="customToolbar"></VueEditor>
+            @image-added="handleImageAdded"></VueEditor>
           <!-- <el-input type="textarea" v-model="formLabelAlign.content" placeholder="来都来了,何不留个足迹呢~" :rows="18"></el-input> -->
         </el-form-item>
         <el-form-item>
@@ -90,9 +89,9 @@ export default {
 
       var formData = new FormData();
       formData.append("file", file);
-
-      axios({
-        url: "https://fakeapi.yoursite.com/images",
+      console.log(formData)
+      this.$axios({
+        url: "/api/upload",
         method: "POST",
         data: formData
       })

@@ -29,7 +29,7 @@ export default new Router({
       component: () => import('./AddWebAtricle.vue')
     },
     {
-      path: '/editwebarticle',
+      path: '/editwebarticle/:id',
       name: 'editwebarticle',
       meta: {
         requireAuth: true,

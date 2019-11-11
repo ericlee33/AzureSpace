@@ -31,6 +31,7 @@
     <div class="button">
     <el-button type="primary" id="gotop" style="display:none;position:fixed;right:5%;bottom:20%;width:50px;height:50px;text-align:center;padding:13px;border-radius:50%;" @click="gotop()"><i class="el-icon-caret-top" style="font-weight:bold;font-size:20px;width:100%;height:100%;"></i></el-button>
     </div>
+    <img id="fixImg" src="../../assets/images/egg.gif">
   </div>
 </template>
 <script>
@@ -50,6 +51,11 @@ export default {
         message: '欢迎来到我的空间,在这里可以畅所欲言哦!',
         duration: 3500,
         offset: 200
+      })
+      this.$notify({
+        message: '新用户可以注册哦，如果有权限可以进入后台!',
+        duration: 6500,
+        offset: 300
       })
     },
     // 回到顶部
@@ -88,6 +94,10 @@ html {
   width: 100%;
   background: url('../../assets/images/bg1.png');
 }
+.rich-img {
+  width: 100%;
+  height: auto;
+}
 // 避免动画使页面在加载时出现左右滚动条
 #app {
   overflow: hidden;
@@ -104,9 +114,22 @@ html {
     height: 50px;
   }
 }
+#fixImg {
+  position: fixed;
+  left: 0;
+  bottom: 20%;
+  &:hover {
+    transform: scale(0.5) skew(20deg);
+    transition: all 3s linear;
+  }
+}
 @media screen and (max-width: 768px) {
   #aside {
     display: none;
+  }
+  #fixImg {
+    width: 60px;
+    height: 60px;
   }
   .container {
     width: 100%;

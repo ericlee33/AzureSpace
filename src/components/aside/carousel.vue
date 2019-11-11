@@ -48,6 +48,7 @@ export default {
 <style lang="less" scoped>
 .wrapper {
   padding: 2%;
+  margin-top: 10%;
   background-color: rgba(255,255,255,.6);
   border-radius: 1%;
   box-shadow: 0 0 10px rgba(0,0,0,.3);

@@ -9,7 +9,7 @@
       <div class="header">
         <h3 class="title">{{ item.title }}</h3>
         <p class="time">发表时间:{{ item.created_time | dateFormat }}</p>
-        <p class="catagory">文章类型: {{ item.category }}</p>
+        <p class="category">文章类型: {{ item.category }}</p>
       </div>
       <p class="content" v-html="item.content"></p>
     </div>
@@ -34,6 +34,7 @@ export default {
       this.$axios.get('/api/getblog/' + this.id)
         .then(res => {
           this.article = res.data.bloginfo
+          console.log(this.article)
         })
     },
     // 返回按钮
