@@ -70,7 +70,13 @@ export default {
       } else {
         topBtn.style.display = 'none';
       }
+    },
+    getLength() {
+      this.$store.dispatch('getBlogLength')
     }
+  },
+  created() {
+    this.getLength()
   },
   mounted() {
     this.open()

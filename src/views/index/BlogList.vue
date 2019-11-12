@@ -11,6 +11,8 @@
           <p class="readinfo"> > 点击阅读全文 </p>
         </div>
         <p class="content" v-html="$options.filters.ellipsis(item.content)"></p>
+        <!-- <i class="comment"><i class="el-icon-s-comment">评论({{ item.watcher }})</i></p> -->
+        <p class="watcher"><i class="el-icon-view"> 浏览({{ item.watcher }})</i></p>
         <p class="category"><i class="el-icon-paperclip"> {{ item.category }}</i></p>
         <p class="time"><i class="el-icon-time"></i> {{ item.created_time | dateFormat }}</p>
       </div>
@@ -36,8 +38,8 @@ export default {
       ],
       currentPage: 1,
       size: 8,
-      total: null,
-      count: 1
+      // total: null,
+      // count: 1
       
     }
   },
@@ -57,15 +59,16 @@ export default {
         })
       
     },
-    getLength() {
-      this.$axios.post('/api/bloglength')
-        .then(res => {
-          if(res.data.err_code === 0){
-            this.total = res.data.blogslength
-            this.count = Math.ceil(res.data.blogslength / this.size)
-            }
-        })
-    },
+    // getLength() {
+      // this.$axios.post('/api/bloglength')
+      //   .then(res => {
+      //     if(res.data.err_code === 0){
+      //       this.total = res.data.blogslength
+      //       this.count = Math.ceil(res.data.blogslength / this.size)
+      //       }
+      //   })
+      // this.$store.dispatch('getBlogLength')
+    // },
     // 点击文章查看详细内容
     goBlogInfo(id) {
       this.$router.push({ name: "bloginfo", params: { id } }); 
@@ -78,9 +81,17 @@ export default {
       document.documentElement.scrollTop = document.body.scrollTop = window.pageYOffset = 400
     }
   },
+  computed: {
+    total() {
+      return this.$store.state.articleLength
+    },
+    count() {
+      return Math.ceil(this.total / this.size)
+    }
+  },
   created(){
     this.getArticle()
-    this.getLength()
+    // this.getLength()
   }
 }
 </script>
@@ -131,6 +142,16 @@ export default {
         margin-bottom: 20px;
         font-size: 16px;
         line-height: 40px;
+      }
+      // .comment {
+      //   position: absolute;
+      //   bottom: 5px;
+      //   right: 370px;
+      // }
+      .watcher {
+        position: absolute;
+        bottom: 5px;
+        right: 290px;
       }
       .category {
         position: absolute;

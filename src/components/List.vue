@@ -1,5 +1,5 @@
 <template>
-  <div class="web-container">
+  <div class="container">
 
     <!-- 文章渲染 -->
     <div class="blog-container">
@@ -89,7 +89,7 @@ export default {
 <style lang="less" scoped>
 @titlecolor:#00A67C;
 
-.web-container {
+.container {
   .blog-container{
     margin-bottom: 10px;
     .articles {

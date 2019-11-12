@@ -1,7 +1,7 @@
 <template>
   <div class="footer-container">
     <div class="w footer">
-      <p>Azure的个人空间 Mounted <i>{{ days }}</i> days in Tencent Cloud</p></p>
+      <p>Azure的个人空间 Mounted on Tencent Cloud for <i>{{ days }}</i> days</p></p>
       <p class="copyright">Copyright © 2019, azure All Rights Reserved</p>
     </div>
   </div>

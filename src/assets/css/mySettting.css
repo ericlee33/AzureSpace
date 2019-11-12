@@ -25,3 +25,6 @@ img {
 * {
   box-sizing: border-box;
 }
+i {
+  font-style: normal;
+}

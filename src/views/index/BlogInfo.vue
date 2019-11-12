@@ -2,7 +2,7 @@
   <div class="bloginfo-container">
     <!-- 返回 -->
     <div class="back">
-      <el-button type="primary" icon="el-icon-back" @click="backToBlogList">返回</el-button>
+      <p @click="backToBlogList"><i class="el-icon-back"></i> 返回</p>
     </div>
       
     <div class="articles" v-for="item in article" :key="item.id">
@@ -57,6 +57,14 @@ export default {
   padding: 3%;
   .back {
     position: absolute;
+    font-weight: bold;
+    >p {
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+      color: forestgreen;
+    }
   }
 
   .header {
