@@ -1,7 +1,7 @@
 <template>
   <div class="aboutblog">
     <p>小站已经在云上漂流了<i> {{ days }} </i>天了！</p>
-    <p>欢迎在大家小站上留言:.ﾟヽ(｡◕‿◕｡)ﾉﾟ.:｡+ﾟ</p>
+    <p>欢迎大家在小站上留言:.ﾟヽ(｡◕‿◕｡)ﾉﾟ.:｡+ﾟ</p>
     <p>您是第<i> {{ guest }} </i>位来到这里的访客</p>
     <p>小站目前有<i> {{ articleNum }} </i>篇文章</p>
   </div>
@@ -35,7 +35,6 @@ export default {
   },
   created() {
     this.guestNum()
-    console.log(this.articleNum)
   }
 }
 </script>

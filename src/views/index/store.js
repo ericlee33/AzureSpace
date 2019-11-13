@@ -11,6 +11,7 @@ export default new Vuex.Store({
     loginFlag: false,
     // 监听是否有新的comment出现
     commentFlag: false,
+    // 博客文章总长度
     articleLength: 0
   },
   mutations: {
@@ -36,10 +37,7 @@ export default new Vuex.Store({
       axios.post('/api/bloglength')
         .then(res => {
           if(res.data.err_code === 0){
-              // this.total = res.data.blogslength
               context.commit('changeBlogLength', res.data)
-              // 计算有多少页
-              // this.count = Math.ceil(res.data.blogslength / this.size)
             }
         })
     }

@@ -2,42 +2,39 @@
   <div class="bloginfo-container">
     <!-- 返回 -->
     <div class="back">
-      <el-button type="primary" icon="el-icon-back" @click="backToBlogList">返回</el-button>
+      <p @click="backToBlogList"><i class="el-icon-back"></i> 返回</p>
     </div>
       
     <div class="articles" v-for="item in article" :key="item.id">
       <div class="header">
         <h3 class="title">{{ item.title }}</h3>
         <p class="time">发表时间:{{ item.created_time | dateFormat }}</p>
-        <p class="category">文章类型: {{ item.category }}</p>
+        <p class="category">文章类型:{{ item.category }}</p>
       </div>
       <p class="content" v-html="item.content"></p>
     </div>
 
-    <web-info-ct :id="this.id"></web-info-ct>
+    <blog-info-ct :id="this.id"></blog-info-ct>
   </div>
 </template>
 
 <script>
-import comment from '../../components/subcomponents/comment.vue'
+import comment from './subcomponents/comment.vue'
 
 export default {
+  props: ['id'],
   data(){
     return{
-      article: [],
-      id: this.$route.params.id
+      article: []
     }
   },
   methods: {
-    // 从后台获取数据
     addArticle() {
       this.$axios.get('/api/getblog/' + this.id)
         .then(res => {
-          // console.log(res.data.blogs)
           this.article = res.data.bloginfo
         })
     },
-    // 返回按钮
     backToBlogList() {
       this.$router.go(-1)
     }
@@ -46,21 +43,35 @@ export default {
     this.addArticle()
   },
   components: {
-    'web-info-ct':comment
+    'blog-info-ct':comment
   }
 }
 </script>
 
 <style lang="less" scoped>
-.container {
+.bloginfo-container {
   position: relative;
   background-color: rgba(255,255,255,.6);
   border-radius: 1%;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
   padding: 3%;
-
   .back {
     position: absolute;
+    font-weight: bold;
+    >p {
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+      color: forestgreen;
+      text-align: center;
+      border-radius: 10%;
+      background-color: rgba(0,0,0,.05);
+      
+      &:hover {
+        background: rgba(0, 0, 0, .1)
+      }
+    }
   }
 
   .header {
@@ -69,9 +80,22 @@ export default {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    margin-top: 5%;
+
+    >p {
+      font-size:12px;
+      height: 10px;
+      line-height: 10px;
+    }
   }
   .content {
-    line-height: 1.5;
+    width: 100%;
+    line-height: 1.8;
+    // white-space:normal;
+    word-break:break-all;
+  }
+  .em {
+    width: 100%;
   }
 }
 </style>

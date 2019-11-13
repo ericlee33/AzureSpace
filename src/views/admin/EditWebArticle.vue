@@ -118,7 +118,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .edit-web-article-container {
-  height: 100%;
+  // height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -28,7 +28,6 @@
             <a href="https://github.com/Azure33" target="_blank">https://github.com/Azure33</a>
           </p>
           <p>Email: 515634453@qq.com</p>
-          <p>Tel: 15652625130</p>
         </div>
       </div>
     </div>
@@ -62,7 +61,7 @@ export default {
 
 <style lang="less" scoped>
 .box-card {
-  // 名片整体样式
+  /* 名片整体样式 */
   padding: 4%;
   margin-top: 10%;
   width: 100%;
@@ -70,13 +69,13 @@ export default {
   border-radius: 1%;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
 
-  // 名片头部
+  /* 名片头部 */
   .header {
     border-bottom: 1px solid azure;
     height: 30px;
     line-height: 30px;
   }
-  // 名片内容
+  /* 名片内容 */
   .text {
     margin-top: 2%;
     
@@ -84,10 +83,19 @@ export default {
       padding: 0 30% 0 30%;
       display: flex;
       justify-content: space-around;
-      // 微信二维码样式
+      /* 微信二维码样式 */
       .add {
         position: relative;
         p {
+          /* 遮挡层 */
+          &:hover::after {
+            content:'';
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0,0,0,.2);
+          }
+
           width: 50px;
           height: 50px;
           background: url('../../assets/images/aboutme/wechat-icon.png');

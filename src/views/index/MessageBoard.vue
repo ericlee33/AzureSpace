@@ -1,7 +1,7 @@
 <template>
   <div class="comment-container">
 
-    <h3>客官,想说些什么~尽管写下吧!</h3>
+    <h3>Hello~欢迎来到我的博客，有什么想说的~尽管写下吧!</h3>
     <hr>
 
     <!-- 写评论 -->
@@ -103,6 +103,7 @@ export default {
   h3 {
     height: 50px;
     line-height: 50px;
+    color: #00A67C;
   }
   .add-comment {
     margin-top: 20px;
@@ -111,6 +112,7 @@ export default {
     h3 {
       height: 50px;
       line-height: 50px;
+      color: #00A67C;
 
       i {
         font-size: 20px;

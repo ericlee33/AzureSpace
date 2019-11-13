@@ -1,6 +1,6 @@
-"_id","__v","category","content","created_time","title"
-"5d53b8c970167e20d845e222","0","个人随笔","直到午牌时分，井底三人才先后醒转。第一个醒的是王语嫣，她功力本浅，内力虽然全失，但原来并没多少，受损也就无几。她醒转后自然立时便想到段誉，其时虽是光天白日，深井之中仍是目不见物，她伸手一摸，碰到了段誉，叫道：“段郎，段郎，你……你……你怎么了？”不听得段誉的应声，只道他已被鸠摩智扼死，不禁抚“尸”痛哭，将他紧紧抱在胸前，哭道：“段郎，段郎，你对我这么情深意重，我却没有一天好言语、好颜色对你，我只盼日后丝萝得托乔木，好好的补报于你，哪知道……哪知道……我俩竟恁地命苦，今日你命丧恶僧之手……”","14/8/2019 07:31:21.899","天龙八部经典桥段"
-"5d543112dd65972d2059ac10","0","前端技术","1.flex子项目在主轴的缩放比例，不指定flex属性，则不参与伸缩分配\n
+"_id","category","content","created_time","title"
+"5d53b8c970167e20d845e222","个人随笔","直到午牌时分，井底三人才先后醒转。第一个醒的是王语嫣，她功力本浅，内力虽然全失，但原来并没多少，受损也就无几。她醒转后自然立时便想到段誉，其时虽是光天白日，深井之中仍是目不见物，她伸手一摸，碰到了段誉，叫道：“段郎，段郎，你……你……你怎么了？”不听得段誉的应声，只道他已被鸠摩智扼死，不禁抚“尸”痛哭，将他紧紧抱在胸前，哭道：“段郎，段郎，你对我这么情深意重，我却没有一天好言语、好颜色对你，我只盼日后丝萝得托乔木，好好的补报于你，哪知道……哪知道……我俩竟恁地命苦，今日你命丧恶僧之手……”","14/8/2019 07:31:21.899","天龙八部经典桥段"
+"5d543112dd65972d2059ac10","前端技术","1.flex子项目在主轴的缩放比例，不指定flex属性，则不参与伸缩分配\n
 min-width 最小值 min-width: 280px 最小宽度 不能小于 280\n
 max-width: 1280px 最大宽度 不能大于 1280\n
 2.flex-direction调整主轴方向（默认为水平方向）\n
@@ -9,24 +9,24 @@ flex-direction: row 水平排列\n
 3、justify-content调整主轴对齐（水平对齐）\n
 4、align-items调整侧轴对齐（垂直对齐）
 flex-wrap控制是否换行","14/8/2019 16:04:34.848","flex的一些基本属性"
-"5d551e0e9df7c314e4dabf2a","0","前端技术","我在进行axios渲染后端标签时遇到了一个问题<br/>
+"5d551e0e9df7c314e4dabf2a","前端技术","我在进行axios渲染后端标签时遇到了一个问题<br/>
 由于想渲染时在v-html使用过滤器将文字的显示个数限制在指定的个数<br/>
 但是发现在v-html中似乎无法使用过滤器<br/>
 通过查找网上资料最后找到了解决办法<br/>v-html=""$options.filters.FILTERNAME(args)""或<br/>
 :inner-html.prop=""args | FILTERNAME"".这种形式,就可以解决问题了!","15/8/2019 08:55:42.543","v-html中使用过滤器的问题"
-"5d56844a5a2e2c22cc4b293c","0","前端技术","在做博客文章管理系统时遇到了一些问题<br/>
+"5d56844a5a2e2c22cc4b293c","前端技术","在做博客文章管理系统时遇到了一些问题<br/>
 由于管理系统页面整体都使用了flex布局,导致每个模块的高度使用height:100%也无法撑起来,最后发现了一些原因<br/>
 由于flex布局触发了bfc,导致一些布局上的问题,一些需要让高度与页面相等的组件添加height:100%;
 而且App.vue中加了scoped导致html,body{height:100%;width:100%}失效,下次一定要注意一下这个问题<br/>","16/8/2019 10:24:10.199","在后台布局时出现的一些小问题"
-"5d5684f95a2e2c22cc4b293d","0","前端技术","由于我对后端实现过滤的方法不太熟悉,于是便想利用main.js中已经定义好的dateformat过滤器进行时间的过滤,但是由于管理表格使用的是element组件,无法在标签属性中进行过滤<br/>
+"5d5684f95a2e2c22cc4b293d","前端技术","由于我对后端实现过滤的方法不太熟悉,于是便想利用main.js中已经定义好的dateformat过滤器进行时间的过滤,但是由于管理表格使用的是element组件,无法在标签属性中进行过滤<br/>
 最后解决办法是,在方法中进行过滤.<br/>
 由于在方法中，this是可以访问到Vue这个实例的，所以可以在$option上拿到过滤器{<br/>
 this.tableData.forEach(i => {<br/>
 i.created_time = this.$options.filters['dateFormat'](i.created_time){<br/>
 })","16/8/2019 10:27:05.211","过滤器过滤问题"
-"5d57dc88435e952120153499","0","个人随笔","123","17/8/2019 10:52:56.938","123"
-"5d5832c6e3331f3300f210f4","0","前端技术","目标是: 想让button按钮点击实现a标签一样的跳转外链<br />一开始想通过this.$router.path = 地址 来进行跳转<br />运行后发现报错read only,发现这是个只读参数<br />不能用之后回忆了一下a标签的原理,实际是href的改变<br />于是通过window.location.href = e 成功进行了地址跳转","17/8/2019 17:00:54.052","想通过按钮的点击事件实现vue多页面跳转"
-"5d597da02ce8c52f347acb41","0","前端技术","在使用express-session在服务端保持session时,调试后端时出现了错误,<br/>
+"5d57dc88435e952120153499","个人随笔","希望学生们不要再被外国势力所影响了，不要因为一时冲动造成不可挽回的后果，港岛一定要挺住，hk加油！","17/8/2019 10:52:56.938","About hk"
+"5d5832c6e3331f3300f210f4","前端技术","目标是: 想让button按钮点击实现a标签一样的跳转外链<br />一开始想通过this.$router.path = 地址 来进行跳转<br />运行后发现报错read only,发现这是个只读参数<br />不能用之后回忆了一下a标签的原理,实际是href的改变<br />于是通过window.location.href = e 成功进行了地址跳转","17/8/2019 17:00:54.052","想通过按钮的点击事件实现vue多页面跳转"
+"5d597da02ce8c52f347acb41","前端技术","在使用express-session在服务端保持session时,调试后端时出现了错误,<br/>
 Nodejs Error: Can't set headers after they are sent<br/>
 router.post('/api/judgelogin', function (req, res, next) {<br /> <br />    if(req.session.user){<br />      return res.status(200).json({<br />        err_code: 0,<br />        message: 'OK'<br />      })<br />    }<br/>
 
@@ -34,5 +34,24 @@ router.post('/api/judgelogin', function (req, res, next) {<br /> <br />    if(re
 
 解决方案：清理多余次数响应；每次响应后立马return掉函数<br/>
 最后发现是忘记在if中return<br/>","18/8/2019 16:32:32.432","Nodejs Error错误解决"
-"5d5ad60e875fc51a14349c8f","0","个人随笔","小时候，<br />乡愁是一枚小小的邮票，<br />我在这头，<br />母亲在那头。<br /><br />长大后，<br />乡愁是一张窄窄的船票，<br />我在这头，<br />新娘在那头。<br /><br />后来啊，<br />乡愁是一方矮矮的坟墓，<br />我在外头，<br />母亲在里头。<br /><br />而现在，<br />乡愁是一湾浅浅的海峡，<br />我在这头，<br />大陆在那头","19/8/2019 17:02:06.284","愿祖国永远昌盛"
-"5d5d2037e9d1e92dd0f68c7c","0","前端技术","关于vue项目报错：this relative module was not found<br />This relative module was not found:<br /><br />* ./vue-temp/vue-editor-bridge in ./node_modules/_babel-loader@7.1.5@babel-loader/lib!./node_modules/_vue-loader@13.7.3@vue-loader/lib/selector.js?type=script&index=0!./src/views/useCarDetail.vue<br />最后发现原因为script第一行增加了一行代码import func from './vue-temp/vue-editor-bridge'; 自己并未引入这个东西，可能是vscode编辑器自动补全的问题","21/8/2019 10:43:03.971","关于vue项目报错vue-editor-bridge"
+"5d5ad60e875fc51a14349c8f","个人随笔","小时候，<br />乡愁是一枚小小的邮票，<br />我在这头，<br />母亲在那头。<br /><br />长大后，<br />乡愁是一张窄窄的船票，<br />我在这头，<br />新娘在那头。<br /><br />后来啊，<br />乡愁是一方矮矮的坟墓，<br />我在外头，<br />母亲在里头。<br /><br />而现在，<br />乡愁是一湾浅浅的海峡，<br />我在这头，<br />大陆在那头","19/8/2019 17:02:06.284","愿祖国永远昌盛"
+"5d5d2037e9d1e92dd0f68c7c","前端技术","关于vue项目报错：this relative module was not found<br />This relative module was not found:<br /><br />* ./vue-temp/vue-editor-bridge in ./node_modules/_babel-loader@7.1.5@babel-loader/lib!./node_modules/_vue-loader@13.7.3@vue-loader/lib/selector.js?type=script&index=0!./src/views/useCarDetail.vue<br />最后发现原因为script第一行增加了一行代码import func from './vue-temp/vue-editor-bridge'; 自己并未引入这个东西，可能是vscode编辑器自动补全的问题","21/8/2019 10:43:03.971","关于vue项目报错vue-editor-bridge"
+"5d5ec23f3c6b180d8b73a9ea","前端技术","将test.json，导入到MongoDB中，使用语句：mongoimport --db 库名 --collection 集合名 --file test.json<br /><br />如果MongoDB创建了用户，使用语句：mongoimport -u 账号 -p 密码 --db 库名 --collection 集合名 --file test.json","22/8/2019 16:26:39.499","将本地MongoDB的数据导入到Linux的MongoDB中"
+"5d5ec2653c6b180d8b73a9eb","前端技术","解决方法：<br/>
+运行mongoexport和mongoimport的时候必须退出当前mongo环境","22/8/2019 16:27:17.686","mongoDB运行export导出报错"
+"5d5ec3d63c6b180d8b73a9ec","前端技术","dbpath = /opt/mongodb-4.0.1/bin/data <br /># 日志文件存放目录<br />logpath = /opt/mongodb-4.0.1/bin/logs/mongodb.log <br /># 端口<br />port = 27017<br />#以守护程序的方式启用，即在后台运行<br />fork = true<br /># 日志追加<br />logappend=true<br /># 是否认证<br />auth=false<br /># 远程连接要指定ip 不然无法连接。0.0.0.0不限制ip访问,并开启对应端口<br />bind_ip=0.0.0.0","22/8/2019 16:33:26.658","mongodb.conf-CentOS配置"
+"5d610fa93c6b180d8b73a9ed","前端技术","{<br />  ""Print to console"": {<br />      ""prefix"": ""vue"",<br />      ""body"": [<br />          ""&lt;template&gt;"",<br />          "" &lt;div&gt;$0&lt;/div&gt;"",<br />          ""&lt;/template&gt;"",<br />          """",<br />          ""&lt;script&gt;"",<br />          ""export default {"",<br /><br />          """",<br />          ""}"",<br />          """",<br />          ""&lt;/script&gt;"",<br />          ""&lt;style lang=\""less\"" scoped&gt;"",<br />          """",<br />          ""&lt;/style&gt;""<br />      ],<br />      ""description"": ""Log output to console""<br />  }<br />}","24/8/2019 10:21:29.86","配置vue代码段"
+"5d61112f3c6b180d8b73a9ee","个人随笔","有的时候心情烦躁，静下心来，听一首钢琴曲，瞬间心情就顺畅许多。几天前在b站上看到，一名流浪汉流落街头，在欧洲的大街上弹琴，一段时间后，他出现在了美国橄榄球联赛赛场为大家弹奏美国国歌，真的好励志。只要心中有梦，就不会落寞。","24/8/2019 10:27:59.91","最近迷上了钢琴曲"
+"5d67f8083c6b180d8b73a9f0","前端技术","一、client系列<br />　　clientWidth/clientHeight    是我们设置的宽和高加上内边距（没有边框）<br />　　clientLeft/clientTop　　就是我们设置的边框值<br />二、offset系列<br />　　offsetWidth/offsetHeight　　是我们设置的宽和高加上内边距，加上边框<br />　　offsetLeft/offsetTop　　是元素外边距离父级内边距相对于父级，这个父级由定位position：absolute；<br />　　offsetParent　　返回这个元素的父级元素<br />　　offsetTop　参照由父级身上的position：absolute/fixed，如果父级元素身上没有就逐层向上查找，直到body<br />三、scroll系列<br />　scrollWidth/scrollHeight　　就是我们设置的宽和高加内边<br />   scrollLeft/scrollTop　　滚动条卷走的高度","29/8/2019 16:06:32.242","client scroll offset区别"
+"5d6bf7993c6b180d8b73a9f3","前端技术","由于我日常生活为了标签的同步使用了QQ浏览器，但是加载某些网页时会默认使用IE内核，为了让其使用<br />chrome内核我调整了浏览器设置<br />但是在连接学校WIFI时候却出现了异常，点击登录后无限重定向，在改回混合内核之后就好了。<br />可能是因为login界面没有ssl证书的原因吧","1/9/2019 16:53:45.202","开学了，学校wifi连接异常"
+"5d710e1c3c6b180d8b73a9f6","前端技术","1.1强缓存<br />直接使用浏览器的缓存数据，不会再向服务器发送任何请求<br />1.2、协商缓存<br />当第一次请求时服务器返回的响应头中没有Cache-Control和Expires或者Cache-Control和Expires过期还或者它的属性设置为no-cache时(即不走强缓存)","5/9/2019 13:31:08.119","强缓存，协商缓存"
+"5d7bd9183c6b180d8b73aa07","个人随笔","转眼之间大学3年生活都过去了，我看了看社会上对人才的需求，很有感慨。现在大学学的知识可以说和社会很脱节，学校学的都是基础理论，但是实际中都讲究应用，毕了业之后，有的人可能什么都不会。这时候自我驱动学习的能力就很重要，在学校学习的时候，不能想老师和学校能给你太多，如果有追求，一定要抓住时间，学习最新的技术。","13/9/2019 17:59:52.501","大学学习的一些思考"
+"5d88dcc43c6b180d8b73aa0a","前端技术","  var arr=[1,2,3,2,5];<br />            console.log(arr.map(parseInt));//[1, NaN, NaN, 2, NaN]<br />            // arr.map方法就是对于数组arr里面的每一项都去使用方法里面的函数,最后返回新数组<br />            // 因为map方法会有索引,所以实际上就是 <br />            parseInt(1,0);//1,因为0表示十进制<br />            parseInt(2,1);//1进制&lt;2，所以错!<br />            parseInt(3,2);// 2进制,但是3不在0——2范围内(3应该改为11),所以不符合2进制要求<br />            parseInt(2,3);//符合,因为三进制是0-3,而2在范围内<br />            parseInt(5,4);//4进制不包括5,所以NaN","23/9/2019 14:55:00.55","arr.map"
+"5d9c996c3c6b180d8b73aa0d","前端技术","1.HTTP的URL为http://开头，HTTPS的URL为https://开头<br />2.HTTP标准端口80，HTTPS标准端口是443<br />3.HTTP是不安全的，而HTTPS是安全的<br />4.HTTP无法加密，而HTTPS对传输的数据进行加密<br />5.HTTP无需证书，HTTPS需要CA机构wosign颁发的SSL证书","8/10/2019 14:13:00.622","HTTP与HTTPS的不同"
+"5d9ded723c6b180d8b73aa0e","前端技术","同样是检测对象obj调用toString方法（关于toString()方法的用法的可以参考toString的详解），obj.toString()的结果和Object.prototype.toString.call(obj)的结果不一样，这是为什么？<br /><br />        这是因为toString为Object的原型方法，而Array 、Function等类型作为Object的实例，都重写了toString方法。不同的对象类型调用toString方法时，根据原型链的知识，调用的是对应的重写之后的toString方法（Function类型返回内容为函数体的字符串，Array类型返回元素组成的字符串.....），而不会去调用Object上原型toString方法（返回对象的具体类型），所以采用obj.toString()不能得到其对象类型，只能将obj转换为字符串类型；因此，在想要得到对象的具体类型时，应该调用Object上原型toString方法。","9/10/2019 14:23:46.565","为什么用Object.prototype.toString.call(obj)可以检测对象类型"
+"5dadb3ba3c6b180d8b73aa11","前端技术","Error in event handler for runtime.onMessage: TypeError: Cannot read property 'join' of undefined
+    at Object.getPageLang<br/>
+我感觉是插件的报错，但是找不到源头还是，如果有解决方案可以在底下给我留言","21/10/2019 13:33:46.278","每次f12总会报错，寻求答案！"
+"5db6cbf93c6b180d8b73aa12","前端技术","查阅了一下资料：<br/>
+keep-alive：从HTTP/1.1起，浏览器默认都开启了Keep-Alive，保持连接特性，客户端和服务器都能选择随时关闭连接，则请求头中为connection:close。简单地说，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的TCP连接。但是Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。","28/10/2019 11:07:37.649","关于请求头中connection: keep-alive"
+"5dc032e33c6b180d8b73aa14","前端技术","博客目前有几个问题，一个是博客没有使用Token进行管理，第二个是富文本需要实现，这里面可能要去看英文文档，还有一个问题，8月时的博客上线流程应该存在一些问题，比如当时没有用pm2，守护进程的地方也出了一点问题，当时竟然是通过nohup ./mongod &这样可能是hack操作让数据库在我退出命令行后还能运行，还有就是mate标签有一些问题，以及没有买域名，博客的seo问题似乎也可以用nuxt.js解决，还有一个就是博客的功能，可以添加一些，因为做这个博客的初衷其实是希望能帮到更多热爱前端的人，从博客内容上我可能暂时没有什么时间写文章，但是一路走来不易，自己的话还是学到了很多东西，以及自学的过程，我把这些分享出去，可以帮助到更多的人。这些问题在我闲下来时我会一一解决掉，maybe Dec?。","4/11/2019 14:17:07.03","一直没有时间更新博客，在准备重构博客"

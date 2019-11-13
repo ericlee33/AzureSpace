@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="list-container">
 
     <!-- 文章渲染 -->
     <div class="blog-container">
@@ -9,7 +9,7 @@
           <p class="readinfo"> > 点击阅读全文 </p>
         </div>
         <p class="content" v-html="$options.filters.ellipsis(item.content)"></p>
-        <p class="watcher"><i class="el-icon-view"> 阅读({{ item.watcher }})</i></p>
+        <p class="watcher"><i class="el-icon-view"> 阅读( {{ item.watcher }} )</i></p>
         <p class="category"><i class="el-icon-paperclip"> {{ item.category }}</i></p>
         <p class="time"><i class="el-icon-time"></i> {{ item.created_time | dateFormat }}</p>
       </div>
@@ -29,6 +29,7 @@
 <script>
 
 export default {
+  props: ['category','info'],
   data(){
     return{
       article:[
@@ -37,7 +38,6 @@ export default {
       size: 8,
       total: null,
       count: 1
-      
     }
   },
   methods: {
@@ -46,11 +46,10 @@ export default {
       let pagesize = this.size
     
 
-      this.$axios.post('/api/getblog',{start: start, pagesize: pagesize,category: '前端技术'})
+      this.$axios.post('/api/getblog',{start: start, pagesize: pagesize,category: this.category})
         .then(res => {
           if(res.data.err_code === 0){
             this.article = res.data.blogs
-            console.log(this.article)
           }
         })
         .catch(err => {
@@ -60,7 +59,7 @@ export default {
       
     },
     getLength() {
-      this.$axios.post('/api/bloglength',{category: '前端技术'})
+      this.$axios.post('/api/bloglength',{category: this.category})
         .then(res => {
           if(res.data.err_code === 0){
               this.total = res.data.blogslength
@@ -71,7 +70,7 @@ export default {
     },
     // 点击文章查看详细内容
     goBlogInfo(id) {
-      this.$router.push({ name: "webinfo", params: { id } }); 
+      this.$router.push({ name: this.info, params: { id } }); 
     },
     handleCurrentChange(val) {
       this.currentPage = val
@@ -90,8 +89,9 @@ export default {
 @titlecolor:#00A67C;
 
 .container {
-  .blog-container{
+  .list-container{
     margin-bottom: 10px;
+
     .articles {
       position: relative;
       padding: 2%;
@@ -133,11 +133,11 @@ export default {
         font-size: 16px;
         line-height: 40px;
       }
-      // .comment {
-      //   position: absolute;
-      //   bottom: 5px;
-      //   right: 370px;
-      // }
+      /* .comment {
+        position: absolute;
+        bottom: 5px;
+        right: 370px;
+      } */
       .watcher {
         position: absolute;
         bottom: 5px;

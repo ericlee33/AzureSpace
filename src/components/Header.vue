@@ -19,7 +19,7 @@
               <router-link to="/weblist">前端技术</router-link>
               <router-link to="/essaylist">个人随笔</router-link>
               <router-link to="/messageboard">留言板</router-link>
-              <router-link to="/newslist">新闻</router-link>
+              <router-link to="/tools">工具</router-link>
               <router-link to="/aboutme">关于我</router-link>
             </ul>
 
@@ -56,8 +56,6 @@ export default {
       navBarFixed: false,
       // 登录或者进入管理按钮是否显示
       helloFlag: false,
-      // 获取登录状态
-      loginFlag: this.$store.state.loginFlag,
       // 登录或注册dialog是否显示
       dialogFormVisible: false,
       formLabelWidth: '120px'
@@ -99,6 +97,12 @@ export default {
       this.$router.push({name: "home"})
     }
   },
+  computed: {
+      // 获取登录状态
+    loginFlag() {
+      return this.$store.state.loginFlag
+    }
+  },
   created() {
     this.$store.commit('login')
   },
@@ -110,12 +114,6 @@ export default {
   components: {
     register,
     login
-  },
-  watch: {
-    // 监听vuex中loginflag的改变
-    '$store.state.loginFlag': function() {
-      this.loginFlag = this.$store.state.loginFlag
-    }
   }
 }
 

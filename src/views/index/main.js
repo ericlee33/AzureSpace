@@ -15,8 +15,8 @@ Vue.filter('dateFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
 // 过滤文字.当大于规定值时,后面的显示为省略号
 Vue.filter('ellipsis',function(value){
   if (!value) return "";
-  if (value.length > 200) {
-    return value.slice(0, 200) + "...";
+  if (value.length > 400) {
+    return value.slice(0, 400) + "...";
   }
   return value;
 })
@@ -48,5 +48,9 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  mounted() {
+    // You'll need this for renderAfterDocumentEvent.
+    document.dispatchEvent(new Event('render-active'))
+  }
 }).$mount('#app')

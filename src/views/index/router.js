@@ -4,6 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -31,9 +32,9 @@ export default new Router({
       component: () => import('./BlogInfo.vue')
     },
     {
-      path: '/newslist',
-      name: 'newslist',
-      component: () => import('./NewsList.vue'),
+      path: '/tools',
+      name: 'tools',
+      component: () => import('./Tools.vue'),
     },
     {
       path: '/messageboard',
