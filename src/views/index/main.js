@@ -50,7 +50,6 @@ new Vue({
   store,
   render: h => h(App),
   mounted() {
-    // You'll need this for renderAfterDocumentEvent.
-    document.dispatchEvent(new Event('render-active'))
-  }
+    document.dispatchEvent(new Event('render-event'))
+  },
 }).$mount('#app')
