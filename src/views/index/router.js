@@ -9,7 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      redirect: '/weblist'
+      redirect: '/bloglist'
     },
     {
       path: '/weblist',
